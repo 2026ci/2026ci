@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144 108" fill="none">
+  <ellipse
+    cx="52"
+    cy="36"
+    rx="40"
+    ry="28"
+    transform="rotate(-18 52 36)"
+    stroke="#F47B00"
+    stroke-width="8"
+  />
+  <ellipse
+    cx="84"
+    cy="50"
+    rx="30"
+    ry="24"
+    transform="rotate(-12 84 50)"
+    stroke="#FFC07A"
+    stroke-width="7"
+  />
+  <ellipse
+    cx="70"
+    cy="66"
+    rx="24"
+    ry="22"
+    transform="rotate(18 70 66)"
+    stroke="#FFA34A"
+    stroke-width="7"
+  />
+</svg>
