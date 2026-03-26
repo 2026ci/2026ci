@@ -3524,7 +3524,7 @@
             <div class="menu-title">상선사업부</div>
           </div>
           <div class="submenu-item" data-target="biz-obu" onclick="activateSection('p2', 'biz-obu', this)">
-            <div class="menu-title">OBU</div>
+            <div class="menu-title">EPU</div>
           </div>
           <div class="submenu-item" data-target="biz-special" onclick="activateSection('p2', 'biz-special', this)">
             <div class="menu-title">특수선사업부</div>
@@ -3564,7 +3564,7 @@
               <div class="menu-title">상선사업부</div>
             </div>
             <div class="submenu-item submenu-item-child" data-target="conclusion-barrier-obu" onclick="activateSection('p3', 'conclusion-barrier-obu', this)">
-              <div class="menu-title">OBU</div>
+              <div class="menu-title">EPU</div>
             </div>
             <div class="submenu-item submenu-item-child" data-target="conclusion-barrier-special" onclick="activateSection('p3', 'conclusion-barrier-special', this)">
               <div class="menu-title">특수선사업부</div>
@@ -4102,8 +4102,8 @@
                 </svg>
               </div>
               <div>
-                <h2 class="section-title">OBU</h2>
-                <p class="section-desc">OBU는 글로벌 조직 특성을 고려해 division과 세부 구분을 함께 제시하고, 조직 간 편차와 관리 포인트를 한 화면에서 비교할 수 있도록 구성했습니다.</p>
+                <h2 class="section-title">EPU</h2>
+                <p class="section-desc">EPU는 글로벌 조직 특성을 고려해 division과 세부 구분을 함께 제시하고, 조직 간 편차와 관리 포인트를 한 화면에서 비교할 수 있도록 구성했습니다.</p>
               </div>
             </div>
           </div>
@@ -4383,7 +4383,7 @@ const businessTypeDisplayOrder = [
 ];
 const businessTypeDisplayNameMap = {
   "1. 상선사업부": "상선사업부",
-  "2. Energy Plant Unit": "OBU",
+  "2. Energy Plant Unit": "EPU",
   "3. 특수선사업부": "특수선사업부",
   "4. 제조총괄+CSHO": "제조총괄&CSHO",
   "5. 제품전략기술원": "제품전략기술원",
@@ -4862,6 +4862,13 @@ function getTableHeaderDecor(label) {
 function getDisplayTableHeaderLabel(label) {
   const normalized = String(label || "").trim();
   if (normalized === "division_name") return "사업부";
+  if (normalized === "희생") return "개인희생";
+  if (normalized === "활력") return "업무활력";
+  if (normalized === "아침출근") return "역할인지";
+  if (normalized === "업무를통한성장") return "성장노력";
+  if (normalized === "나에대한기대") return "성장경험";
+  if (normalized === "성과인정기대") return "성과인정";
+  if (normalized === "WAY실천노력") return "가치실현";
   return normalized;
 }
 
@@ -6427,7 +6434,7 @@ function splitCompareLabel(label) {
 
 const businessIndexDisplayOrder = [
   "상선사업부",
-  "OBU",
+  "EPU",
   "특수선사업부",
   "제조총괄&CSHO",
   "제품전략기술원",
@@ -6742,6 +6749,7 @@ function splitAxisLabel(label) {
 function renderBusinessIndexLineChart(rows) {
   const svg = document.getElementById("businessIndexLineChart");
   if (!svg) return;
+  const lineChartMin = 50;
 
   if (!rows.length) {
     svg.innerHTML = "";
@@ -6757,12 +6765,12 @@ function renderBusinessIndexLineChart(rows) {
   const innerWidth = width - left - right;
   const innerHeight = height - top - bottom;
   const scaleX = (index) => left + (rows.length === 1 ? innerWidth / 2 : (index * innerWidth) / (rows.length - 1));
-  const scaleY = (value) => top + innerHeight - ((value - businessIndexDomain.min) / (businessIndexDomain.max - businessIndexDomain.min)) * innerHeight;
+  const scaleY = (value) => top + innerHeight - ((value - lineChartMin) / (businessIndexDomain.max - lineChartMin)) * innerHeight;
 
   svg.setAttribute("viewBox", `0 0 ${width} ${height}`);
   svg.innerHTML = "";
 
-  for (let tick = businessIndexDomain.min; tick <= businessIndexDomain.max; tick += 5) {
+  for (let tick = lineChartMin; tick <= businessIndexDomain.max; tick += 5) {
     const y = scaleY(tick);
     svg.appendChild(
       createSvgEl("line", {
@@ -6770,9 +6778,9 @@ function renderBusinessIndexLineChart(rows) {
         y1: y,
         x2: width - right,
         y2: y,
-        stroke: tick === businessIndexDomain.min ? palette.gray2 : palette.gray,
-        "stroke-width": tick === businessIndexDomain.min ? 1.2 : 1,
-        "stroke-dasharray": tick === businessIndexDomain.min ? "0" : "4 5"
+        stroke: tick === lineChartMin ? palette.gray2 : palette.gray,
+        "stroke-width": tick === lineChartMin ? 1.2 : 1,
+        "stroke-dasharray": tick === lineChartMin ? "0" : "4 5"
       })
     );
 
