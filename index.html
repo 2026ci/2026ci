@@ -5250,7 +5250,7 @@ function parseBusinessUnitRows(sectionId, csvBody) {
 
   if (!headers.length || !csvBody) return [];
 
-  return csvBody
+  const parsedRows = csvBody
     .trim()
     .split(/\n+/)
     .map((line) => {
@@ -5260,6 +5260,113 @@ function parseBusinessUnitRows(sectionId, csvBody) {
         return row;
       }, {});
     });
+
+  return normalizeBusinessDetailDepartmentRows(parsedRows);
+}
+
+function getBusinessDetailWeightColumn(row) {
+  if (Object.prototype.hasOwnProperty.call(row, "응답인원")) return "응답인원";
+  if (Object.prototype.hasOwnProperty.call(row, "응답자수")) return "응답자수";
+  return null;
+}
+
+function hasBusinessDetailPrimaryMetrics(row) {
+  return ["몰입지수", "조직몰입", "업무몰입", "OI", "LI", "CI"].some((key) => toFiniteNumber(row[key]) !== null);
+}
+
+function buildBusinessDetailDepartmentAggregateRow(sourceRow, teamRows) {
+  if (!teamRows.length) return sourceRow;
+
+  const prototypeRow = sourceRow || teamRows[0] || {};
+  const aggregateRow = Object.keys(prototypeRow).reduce((acc, key) => {
+    acc[key] = "";
+    return acc;
+  }, {});
+
+  aggregateRow["division_name"] = sourceRow?.["division_name"] || teamRows[0]?.["division_name"] || "";
+  aggregateRow["구분"] = sourceRow?.["구분"] || teamRows[0]?.["구분"] || "";
+  aggregateRow["팀"] = sourceRow?.["팀"] || aggregateRow["구분"] || "";
+
+  const weightColumn = getBusinessDetailWeightColumn(prototypeRow);
+  const hasWeights = weightColumn && teamRows.some((row) => (toFiniteNumber(row[weightColumn]) ?? 0) > 0);
+
+  Object.keys(prototypeRow).forEach((key) => {
+    if (["division_name", "구분", "팀"].includes(key)) return;
+
+    if (key === weightColumn) {
+      const sum = teamRows.reduce((acc, row) => acc + (toFiniteNumber(row[key]) ?? 0), 0);
+      aggregateRow[key] = sum > 0 ? String(Math.round(sum)) : "";
+      return;
+    }
+
+    const samples = teamRows
+      .map((row) => {
+        const value = toFiniteNumber(row[key]);
+        if (value === null) return null;
+        const weight = hasWeights ? (toFiniteNumber(row[weightColumn]) ?? 0) : 1;
+        return { value, weight };
+      })
+      .filter(Boolean);
+
+    if (!samples.length) {
+      aggregateRow[key] = sourceRow?.[key] || "";
+      return;
+    }
+
+    const totalWeight = samples.reduce((acc, sample) => acc + (sample.weight > 0 ? sample.weight : 0), 0);
+    const average = totalWeight > 0
+      ? samples.reduce((acc, sample) => acc + sample.value * (sample.weight > 0 ? sample.weight : 0), 0) / totalWeight
+      : samples.reduce((acc, sample) => acc + sample.value, 0) / samples.length;
+
+    aggregateRow[key] = Number.isFinite(average) ? average.toFixed(3) : "";
+  });
+
+  return aggregateRow;
+}
+
+function normalizeBusinessDetailDepartmentRows(rows) {
+  const totals = rows.filter((row) => isBusinessDetailTotalRow(row));
+  const grouped = new Map();
+  const order = [];
+
+  rows
+    .filter((row) => !isBusinessDetailTotalRow(row))
+    .forEach((row) => {
+      const key = getBusinessDetailDepartmentKey(row);
+      if (!grouped.has(key)) {
+        grouped.set(key, { departmentRow: null, teamRows: [] });
+        order.push(key);
+      }
+
+      const bucket = grouped.get(key);
+      if (isBusinessDetailTeamRow(row)) {
+        bucket.teamRows.push(row);
+      } else if (!bucket.departmentRow) {
+        bucket.departmentRow = row;
+      }
+    });
+
+  const normalized = [...totals];
+
+  order.forEach((key) => {
+    const bucket = grouped.get(key);
+    if (!bucket) return;
+
+    const hasDepartmentMetrics = bucket.departmentRow && hasBusinessDetailPrimaryMetrics(bucket.departmentRow);
+    const departmentRow = hasDepartmentMetrics
+      ? bucket.departmentRow
+      : bucket.teamRows.length
+        ? buildBusinessDetailDepartmentAggregateRow(bucket.departmentRow, bucket.teamRows)
+        : null;
+
+    if (departmentRow) {
+      normalized.push(departmentRow);
+    }
+
+    normalized.push(...bucket.teamRows);
+  });
+
+  return normalized;
 }
 
 function normalizeBusinessLabel(label) {
