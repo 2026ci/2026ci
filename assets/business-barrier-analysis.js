@@ -45,10 +45,10 @@ window.businessBarrierAnalysis = {
     },
     {
       "sectionId": "conclusion-barrier-obu",
-      "menuLabel": "OBU",
-      "title": "OBU",
-      "panelTitle": "OBU 주요 몰입 저해 요인",
-      "kicker": "OBU engagement barriers",
+      "menuLabel": "EPU",
+      "title": "EPU",
+      "panelTitle": "EPU 주요 몰입 저해 요인",
+      "kicker": "EPU engagement barriers",
       "tone": "green",
       "responseCount": 578,
       "rows": [
