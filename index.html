@@ -1992,6 +1992,12 @@
     overflow: hidden;
   }
 
+  .chart-surface.scroll-x {
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+  }
+
   .chart-surface svg {
     display: block;
     max-width: 100%;
@@ -2006,6 +2012,14 @@
   .business-index-line-svg {
     width: 100%;
     min-width: 0;
+  }
+
+  .business-detail-line-svg {
+    display: block;
+    width: auto;
+    min-width: 100%;
+    max-width: none;
+    height: auto;
   }
 
   .business-index-legend {
@@ -3303,6 +3317,158 @@
     }
   }
 
+  @media (min-width: 1025px) and (max-width: 1240px) {
+    .sidebar {
+      width: 236px;
+      min-width: 236px;
+      padding: 18px 12px 24px;
+    }
+
+    .submenu-item {
+      padding: 11px 12px;
+    }
+
+    .submenu-item .menu-title {
+      font-size: 12px;
+    }
+
+    .content {
+      padding: 20px 20px 32px;
+    }
+
+    .page-hero {
+      padding: 24px;
+      margin-bottom: 18px;
+    }
+
+    .hero-title {
+      font-size: 30px;
+    }
+
+    .hero-desc {
+      font-size: 13px;
+      max-width: none;
+    }
+
+    .section-head {
+      padding: 18px 18px 16px;
+      gap: 14px;
+    }
+
+    .section-body {
+      padding: 18px;
+    }
+
+    .section-title {
+      font-size: 20px;
+    }
+
+    .section-index {
+      min-width: 48px;
+      height: 48px;
+      border-radius: 13px;
+    }
+
+    .section-index svg {
+      width: 25px;
+      height: 25px;
+    }
+
+    .business-index-metrics {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .business-index-metrics .summary-kpi-card.primary {
+      grid-column: 1 / -1;
+    }
+
+    .summary-kpi-card {
+      padding: 16px;
+    }
+
+    .summary-kpi-value {
+      font-size: 30px;
+    }
+
+    .summary-kpi-focus {
+      font-size: 17px;
+    }
+
+    .detail-highlight-card {
+      padding: 14px 14px 12px;
+    }
+
+    .chart-panel {
+      padding: 14px;
+    }
+
+    .chart-panel-header {
+      gap: 10px;
+    }
+
+    .chart-panel-title {
+      font-size: 13px;
+    }
+
+    .chart-unit {
+      font-size: 9px;
+      padding: 5px 8px;
+    }
+
+    .chart-surface {
+      padding: 8px;
+    }
+
+    .type-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .type-card {
+      padding: 14px;
+    }
+
+    .type-card-name {
+      font-size: 14px;
+      min-height: 40px;
+      padding: 8px 14px;
+    }
+
+    .insight-top-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .insight-group-layout {
+      grid-template-columns: 240px minmax(0, 1fr);
+    }
+
+    .business-detail-filterbar {
+      justify-content: stretch;
+    }
+
+    .business-detail-filtergroup {
+      width: 100%;
+      justify-content: space-between;
+    }
+
+    .business-detail-searchwrap {
+      flex: 1 1 340px;
+      min-width: 0;
+    }
+
+    .business-index-table th,
+    .business-index-table td,
+    .pattern-table th,
+    .pattern-table td {
+      padding: 8px 6px;
+      font-size: 11px;
+    }
+
+    .sort-button {
+      gap: 6px;
+      padding: 8px 6px;
+    }
+  }
+
   @media (max-width: 1024px) {
     body {
       overflow: auto;
@@ -3354,6 +3520,257 @@
     }
   }
 
+  @media (min-width: 761px) and (max-width: 1024px) {
+    .report-section {
+      scroll-margin-top: 180px;
+    }
+
+    .top-nav {
+      padding: 0 14px;
+      gap: 8px;
+    }
+
+    .sidebar {
+      position: sticky;
+      top: 72px;
+      z-index: 30;
+      padding: 14px 12px 16px;
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 10px 26px rgba(15, 23, 42, 0.06);
+    }
+
+    .sidebar-section + .sidebar-section {
+      margin-top: 12px;
+    }
+
+    .sidebar-label {
+      font-size: 10px;
+      margin-bottom: 8px;
+    }
+
+    .submenu-list {
+      gap: 10px;
+      padding-bottom: 2px;
+      scroll-snap-type: x proximity;
+    }
+
+    .submenu-item,
+    .submenu-item.submenu-item-child {
+      min-width: 176px;
+      padding: 11px 12px;
+      scroll-snap-align: start;
+    }
+
+    .submenu-item .menu-title,
+    .submenu-item.submenu-item-child .menu-title {
+      font-size: 12px;
+    }
+
+    .submenu-group-label {
+      padding-left: 4px;
+    }
+
+    .submenu-nested {
+      margin-left: 0;
+      padding-left: 0;
+      border-left: 0;
+      flex-direction: row;
+      gap: 10px;
+    }
+
+    .submenu-item.submenu-item-child::before {
+      display: none;
+    }
+
+    .content {
+      padding: 16px 14px 28px;
+    }
+
+    .page-hero {
+      padding: 22px 18px;
+      margin-bottom: 18px;
+      border-radius: 18px;
+    }
+
+    .hero-grid {
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+
+    .hero-title {
+      font-size: 28px;
+    }
+
+    .hero-desc {
+      font-size: 13px;
+      max-width: none;
+    }
+
+    .hero-stats {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .hero-stat {
+      padding: 14px;
+    }
+
+    .section-head {
+      padding: 18px 18px 16px;
+      gap: 12px;
+    }
+
+    .section-body {
+      padding: 18px;
+    }
+
+    .section-title {
+      font-size: 20px;
+    }
+
+    .section-index {
+      min-width: 46px;
+      height: 46px;
+      border-radius: 12px;
+    }
+
+    .section-index svg {
+      width: 24px;
+      height: 24px;
+    }
+
+    .business-index-metrics {
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+
+    .summary-kpi-card {
+      padding: 16px;
+    }
+
+    .summary-kpi-value {
+      font-size: 30px;
+    }
+
+    .summary-kpi-focus {
+      font-size: 17px;
+    }
+
+    .detail-highlight-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .detail-highlight-card {
+      padding: 14px 14px 12px;
+    }
+
+    .chart-panel {
+      padding: 14px;
+    }
+
+    .chart-panel-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .chart-panel-title {
+      font-size: 13px;
+    }
+
+    .chart-unit {
+      align-self: flex-start;
+      font-size: 9px;
+      padding: 5px 8px;
+    }
+
+    .chart-surface {
+      padding: 8px;
+      border-radius: 14px;
+    }
+
+    .business-detail-filterbar {
+      justify-content: stretch;
+    }
+
+    .business-detail-filtergroup {
+      width: 100%;
+      justify-content: space-between;
+    }
+
+    .business-detail-searchwrap {
+      min-width: 0;
+      flex: 1 1 280px;
+    }
+
+    .business-detail-search-results {
+      max-height: 260px;
+    }
+
+    .type-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .type-card {
+      padding: 14px;
+    }
+
+    .type-card-name {
+      font-size: 14px;
+      min-height: 40px;
+      padding: 8px 14px;
+    }
+
+    .type-dashboard,
+    .insight-top-grid,
+    .insight-group-layout {
+      grid-template-columns: 1fr;
+    }
+
+    .insight-topic-bar {
+      padding: 16px 18px;
+      gap: 12px;
+    }
+
+    .insight-topic-label {
+      font-size: 34px;
+    }
+
+    .insight-topic-pill {
+      min-height: 38px;
+      padding: 8px 14px;
+      font-size: 15px;
+    }
+
+    .insight-topic-headline {
+      min-width: 0;
+      font-size: 22px;
+    }
+
+    .insight-card,
+    .insight-group-card {
+      padding: 16px;
+    }
+
+    .business-index-table th,
+    .business-index-table td,
+    .pattern-table th,
+    .pattern-table td {
+      padding: 8px 6px;
+      font-size: 11px;
+    }
+
+    .sort-button {
+      gap: 6px;
+      padding: 8px 6px;
+    }
+
+    .footer-note {
+      font-size: 11px;
+    }
+  }
+
   @media (max-width: 760px) {
     .top-nav {
       height: 68px;
@@ -3368,6 +3785,11 @@
     }
 
     .detail-highlight-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .hero-stats,
+    .business-index-metrics {
       grid-template-columns: 1fr;
     }
 
@@ -3613,14 +4035,6 @@
             </div>
           </div>
           <div class="section-body">
-            <div class="business-index-toolbar">
-              <div class="filter-pills" id="businessIndexFilterPills">
-                <button type="button" class="filter-pill active" data-filter="전체" onclick="setBusinessIndexFilter('전체', this)">전체</button>
-                <button type="button" class="filter-pill" data-filter="일반직" onclick="setBusinessIndexFilter('일반직', this)">일반직</button>
-                <button type="button" class="filter-pill" data-filter="생산직" onclick="setBusinessIndexFilter('생산직', this)">생산직</button>
-              </div>
-            </div>
-
             <div class="business-index-metrics">
               <div class="summary-kpi-card primary" id="businessIndexPrimaryCard"></div>
               <div class="summary-kpi-card orange" id="businessIndexTopCard"></div>
@@ -3631,35 +4045,18 @@
               <div class="chart-panel">
                 <div class="chart-panel-header">
                   <div>
-                    <div class="chart-panel-title">몰입지수 · 업무몰입 · 조직몰입 비교 막대</div>
-                    <div class="chart-panel-sub">사업부별 몰입지수, 업무몰입, 조직몰입을 한 화면에서 비교하고, 몰입지수는 오렌지 마커로 강조했습니다.</div>
-                  </div>
-                  <div class="chart-unit">UNIT %</div>
-                </div>
-                <div class="chart-surface">
-                  <svg id="businessIndexBarChart" class="business-index-bar-svg" role="img" aria-label="사업부별 몰입지수 업무몰입 조직몰입 비교 막대 차트"></svg>
-                </div>
-                <div class="business-index-legend">
-                  <div class="legend-item"><span class="legend-dot" style="background:#FF771E;"></span>몰입지수</div>
-                  <div class="legend-item"><span class="legend-dot" style="background:#6EBEF6;"></span>업무몰입</div>
-                  <div class="legend-item"><span class="legend-dot" style="background:#0C2F6E;"></span>조직몰입</div>
-                </div>
-              </div>
-
-              <div class="chart-panel">
-                <div class="chart-panel-header">
-                  <div>
-                    <div class="chart-panel-title">OI · LI · CI 추이 선 그래프</div>
+                    <div class="chart-panel-title">몰입지수 · 오션WAY지수 · 리더십지수 · 협업지수 추이 선 그래프</div>
                   </div>
                   <div class="chart-unit">LINE VIEW</div>
                 </div>
                 <div class="chart-surface">
-                  <svg id="businessIndexLineChart" class="business-index-line-svg" role="img" aria-label="사업부별 OI CI LI 선 그래프"></svg>
+                  <svg id="businessIndexLineChart" class="business-index-line-svg" role="img" aria-label="사업부별 몰입지수 오션WAY지수 리더십지수 협업지수 선 그래프"></svg>
                 </div>
                 <div class="business-index-legend">
-                  <div class="legend-item"><span class="legend-dot" style="background:#FF771E;"></span>OI</div>
-                  <div class="legend-item"><span class="legend-dot" style="background:#09C765;"></span>LI</div>
-                  <div class="legend-item"><span class="legend-dot" style="background:#B47BF1;"></span>CI</div>
+                  <div class="legend-item"><span class="legend-dot" style="background:#1D5BBB;"></span>몰입지수</div>
+                  <div class="legend-item"><span class="legend-dot" style="background:#FF771E;"></span>오션WAY지수</div>
+                  <div class="legend-item"><span class="legend-dot" style="background:#09C765;"></span>리더십지수</div>
+                  <div class="legend-item"><span class="legend-dot" style="background:#B47BF1;"></span>협업지수</div>
                 </div>
               </div>
             </div>
@@ -4326,9 +4723,10 @@
   </div>
 </div>
 
-<script src="assets/business-unit-detail-data.js?v=20260326-2"></script>
-<script src="assets/business-unit-production-data.js?v=20260326-2"></script>
-<script src="assets/business-barrier-analysis.js?v=20260326-2"></script>
+<script src="assets/business-unit-detail-data.js?v=20260327-1"></script>
+<script src="assets/business-unit-production-data.js?v=20260327-1"></script>
+<script src="assets/business-unit-detail-overlay.js?v=20260327-1"></script>
+<script src="assets/business-barrier-analysis.js?v=20260327-1"></script>
 <script>
 const contentEl = document.querySelector(".content");
 const SVG_NS = "http://www.w3.org/2000/svg";
@@ -5268,7 +5666,47 @@ function parseBusinessUnitRows(sectionId, csvBody) {
       }, {});
     });
 
-  return normalizeBusinessDetailDepartmentRows(parsedRows);
+  return normalizeBusinessDetailDepartmentRows(sectionId, parsedRows);
+}
+
+function normalizeBusinessDetailOverlayPart(value) {
+  return String(value || "")
+    .trim()
+    .replace(/^\d+\.\s*/, "");
+}
+
+function getBusinessDetailOverlayRow(sectionId, divisionName, departmentName) {
+  const sectionOverlay = window.businessUnitDetailOverlay?.[sectionId];
+  if (!sectionOverlay) return null;
+
+  const overlayKey = [
+    normalizeBusinessDetailOverlayPart(divisionName),
+    normalizeBusinessDetailOverlayPart(departmentName)
+  ].join("|||");
+
+  const row = sectionOverlay[overlayKey];
+  return row ? { ...row } : null;
+}
+
+function getBusinessDetailOverlayTotalRow(sectionId) {
+  const row = window.businessUnitDetailOverlay?.[sectionId]?.["__total__"];
+  return row ? { ...row } : null;
+}
+
+function mergeBusinessDetailRows(baseRow, overlayRow) {
+  const merged = { ...(baseRow || {}) };
+  const source = overlayRow || {};
+
+  Object.keys(source).forEach((key) => {
+    const value = source[key];
+    if (String(value ?? "").trim()) {
+      merged[key] = value;
+    } else if (!Object.prototype.hasOwnProperty.call(merged, key)) {
+      merged[key] = value;
+    }
+  });
+
+  return merged;
 }
 
 function getBusinessDetailWeightColumn(row) {
@@ -5331,7 +5769,7 @@ function buildBusinessDetailDepartmentAggregateRow(sourceRow, teamRows) {
   return aggregateRow;
 }
 
-function normalizeBusinessDetailDepartmentRows(rows) {
+function normalizeBusinessDetailDepartmentRows(sectionId, rows) {
   const totals = rows.filter((row) => isBusinessDetailTotalRow(row));
   const grouped = new Map();
   const order = [];
@@ -5353,18 +5791,36 @@ function normalizeBusinessDetailDepartmentRows(rows) {
       }
     });
 
-  const normalized = [...totals];
+  const normalized = [];
+  const overlayTotalRow = getBusinessDetailOverlayTotalRow(sectionId);
+  const totalRow = overlayTotalRow
+    ? mergeBusinessDetailRows(totals[0] || {}, overlayTotalRow)
+    : totals[0] || null;
+
+  if (totalRow) {
+    normalized.push(totalRow);
+  }
 
   order.forEach((key) => {
     const bucket = grouped.get(key);
     if (!bucket) return;
 
+    const seedRow = bucket.departmentRow || bucket.teamRows[0] || {};
+    const overlayDepartmentRow = getBusinessDetailOverlayRow(
+      sectionId,
+      seedRow["division_name"],
+      seedRow["구분"]
+    );
     const hasDepartmentMetrics = bucket.departmentRow && hasBusinessDetailPrimaryMetrics(bucket.departmentRow);
-    const departmentRow = hasDepartmentMetrics
+    const fallbackDepartmentRow = hasDepartmentMetrics
       ? bucket.departmentRow
       : bucket.teamRows.length
         ? buildBusinessDetailDepartmentAggregateRow(bucket.departmentRow, bucket.teamRows)
-        : null;
+        : bucket.departmentRow;
+
+    const departmentRow = overlayDepartmentRow
+      ? mergeBusinessDetailRows(fallbackDepartmentRow || seedRow, overlayDepartmentRow)
+      : fallbackDepartmentRow;
 
     if (departmentRow) {
       normalized.push(departmentRow);
@@ -5900,6 +6356,180 @@ function renderBusinessDetailHighlights(sectionId, targetId, rows) {
   `;
 }
 
+function renderBusinessDetailChart(sectionId, targetId, rows) {
+  const svg = document.getElementById(targetId);
+  if (!svg) return;
+
+  const detailRows = rows.filter((row) => row["구분"] !== "(전체)" && hasBusinessDetailScore(row));
+  if (!detailRows.length) {
+    svg.innerHTML = "";
+    return;
+  }
+
+  const chartMin = 0;
+  const chartMax = 100;
+  const width = Math.max(860, 120 + detailRows.length * 94);
+  const height = 360;
+  const left = 52;
+  const right = 22;
+  const top = 26;
+  const bottom = 86;
+  const innerWidth = width - left - right;
+  const innerHeight = height - top - bottom;
+  const scaleX = (index) => left + (detailRows.length === 1 ? innerWidth / 2 : (index * innerWidth) / (detailRows.length - 1));
+  const scaleY = (value) => top + innerHeight - ((value - chartMin) / (chartMax - chartMin)) * innerHeight;
+
+  svg.setAttribute("viewBox", `0 0 ${width} ${height}`);
+  svg.setAttribute("width", `${width}`);
+  svg.innerHTML = "";
+
+  for (let tick = chartMin; tick <= chartMax; tick += 10) {
+    const y = scaleY(tick);
+    svg.appendChild(
+      createSvgEl("line", {
+        x1: left,
+        y1: y,
+        x2: width - right,
+        y2: y,
+        stroke: tick === chartMin ? palette.gray2 : palette.gray,
+        "stroke-width": tick === chartMin ? 1.2 : 1,
+        "stroke-dasharray": tick === chartMin ? "0" : "4 5"
+      })
+    );
+
+    const tickLabel = createSvgEl("text", {
+      x: left - 10,
+      y: y + 4,
+      fill: palette.grayText,
+      "font-size": "11",
+      "text-anchor": "end"
+    });
+    tickLabel.textContent = `${tick}`;
+    svg.appendChild(tickLabel);
+  }
+
+  const series = [
+    { key: "몰입지수", color: palette.blue, labelDx: -22, textAnchor: "end" },
+    { key: "OI", color: palette.orange, labelDx: -6, textAnchor: "middle" },
+    { key: "LI", color: palette.green, labelDx: 10, textAnchor: "start" },
+    { key: "CI", color: palette.purpleLight, labelDx: 24, textAnchor: "start" }
+  ];
+
+  series.forEach((item) => {
+    item.points = detailRows
+      .map((row, index) => {
+        const raw = toFiniteNumber(row[item.key]);
+        return raw === null ? null : { x: scaleX(index), y: scaleY(raw * 100), value: raw * 100 };
+      });
+
+    const path = item.points
+      .map((point, index) => (point ? `${index === 0 || !item.points[index - 1] ? "M" : "L"} ${point.x} ${point.y}` : ""))
+      .filter(Boolean)
+      .join(" ");
+
+    if (path) {
+      svg.appendChild(
+        createSvgEl("path", {
+          d: path,
+          fill: "none",
+          stroke: item.color,
+          "stroke-width": 2.8,
+          "stroke-linecap": "round",
+          "stroke-linejoin": "round"
+        })
+      );
+    }
+
+    item.points.forEach((point) => {
+      if (!point) return;
+      svg.appendChild(
+        createSvgEl("circle", {
+          cx: point.x,
+          cy: point.y,
+          r: 4.8,
+          fill: palette.white,
+          stroke: item.color,
+          "stroke-width": 2.8
+        })
+      );
+    });
+  });
+
+  const stackPatterns = {
+    1: [0],
+    2: [-8, 10],
+    3: [-14, 0, 14],
+    4: [-18, -4, 10, 24]
+  };
+
+  detailRows.forEach((row, index) => {
+    const labels = series
+      .map((item) => {
+        const point = item.points[index];
+        return point ? { item, point } : null;
+      })
+      .filter(Boolean)
+      .sort((a, b) => a.point.y - b.point.y || b.point.value - a.point.value);
+
+    const offsets = stackPatterns[labels.length] || stackPatterns[4];
+
+    labels.forEach((entry, stackIndex) => {
+      const verticalOffset = offsets[stackIndex] ?? 0;
+      let labelX = entry.point.x + entry.item.labelDx;
+      let labelY = entry.point.y + verticalOffset - 10;
+      let anchor = entry.item.textAnchor;
+
+      if (labelX < left + 28) {
+        labelX = entry.point.x + Math.abs(entry.item.labelDx) + 10;
+        anchor = "start";
+      } else if (labelX > width - right - 28) {
+        labelX = entry.point.x - Math.abs(entry.item.labelDx) - 10;
+        anchor = "end";
+      }
+
+      labelY = Math.max(18, Math.min(height - bottom - 10, labelY));
+
+      const valueLabel = createSvgEl("text", {
+        x: labelX,
+        y: labelY,
+        fill: entry.item.color,
+        "font-size": "11.5",
+        "font-weight": "800",
+        "text-anchor": anchor,
+        stroke: "#FFFFFF",
+        "stroke-width": "4",
+        "paint-order": "stroke fill",
+        "stroke-linejoin": "round"
+      });
+      valueLabel.textContent = entry.point.value.toFixed(1);
+      svg.appendChild(valueLabel);
+    });
+  });
+
+  detailRows.forEach((row, index) => {
+    const x = scaleX(index);
+    const label = createSvgEl("text", {
+      x,
+      y: height - 46,
+      fill: palette.grayTextDark,
+      "font-size": "11",
+      "font-weight": "700",
+      "text-anchor": "middle"
+    });
+
+    splitAxisLabel(getBusinessDetailRowLabel(sectionId, row)).forEach((line, lineIndex) => {
+      const tspan = createSvgEl("tspan", {
+        x,
+        dy: lineIndex === 0 ? 0 : 12
+      });
+      tspan.textContent = line;
+      label.appendChild(tspan);
+    });
+
+    svg.appendChild(label);
+  });
+}
+
 function renderBusinessDetailInsight(sectionId, targetId, title, rows) {
   const target = document.getElementById(targetId);
   if (!target || !rows.length) return;
@@ -5969,6 +6599,7 @@ function updateBusinessDetailTables(sectionId) {
   renderAllBusinessTable(`${state.prefix}OITable`, columnGroups.oi, rows, tableOptions);
   renderAllBusinessTable(`${state.prefix}LITable`, columnGroups.li, rows, tableOptions);
   renderAllBusinessTable(`${state.prefix}CITable`, columnGroups.ci, rows, tableOptions);
+  renderBusinessDetailChart(sectionId, `${state.prefix}LineChart`, rows);
   renderBusinessDetailHighlights(sectionId, `${state.prefix}Highlights`, rows);
   renderBusinessDetailInsight(sectionId, `${state.prefix}Insight`, state.title, rows);
 }
@@ -6197,6 +6828,25 @@ function renderBusinessDetailSection(sectionId) {
     </div>
 
     <div class="detail-highlight-grid" id="${prefix}Highlights"></div>
+
+    <div class="chart-panel" style="margin-bottom: 14px;">
+      <div class="chart-panel-header">
+        <div>
+          <div class="chart-panel-title">몰입지수 · 오션WAY지수 · 리더십지수 · 협업지수 추이 그래프</div>
+          <div class="chart-panel-sub">기본은 담당 기준으로 보이며, 담당을 펼치면 하위 팀까지 함께 그래프로 확인할 수 있습니다.</div>
+        </div>
+        <div class="chart-unit">LINE VIEW</div>
+      </div>
+      <div class="chart-surface scroll-x">
+        <svg id="${prefix}LineChart" class="business-detail-line-svg" role="img" aria-label="${escapeHtml(title)} 담당별 지수 추이 그래프"></svg>
+      </div>
+      <div class="business-index-legend">
+        <div class="legend-item"><span class="legend-dot" style="background:#1D5BBB;"></span>몰입지수</div>
+        <div class="legend-item"><span class="legend-dot" style="background:#FF771E;"></span>오션WAY지수</div>
+        <div class="legend-item"><span class="legend-dot" style="background:#09C765;"></span>리더십지수</div>
+        <div class="legend-item"><span class="legend-dot" style="background:#B47BF1;"></span>협업지수</div>
+      </div>
+    </div>
 
     <div class="business-index-table-wrap block-tone-navy">
       <div class="business-index-table-head">
@@ -6796,9 +7446,10 @@ function renderBusinessIndexLineChart(rows) {
   }
 
   const series = [
-    { key: "oiLine", color: palette.orange, width: 2.5, label: "OI", markerRadius: 4.2, markerStroke: 2.6, labelDx: -14, labelDy: -10 },
-    { key: "liLine", color: palette.green, width: 3, label: "LI", markerRadius: 4.8, markerStroke: 3, labelDx: 0, labelDy: -12 },
-    { key: "ciLine", color: palette.purpleLight, width: 2.5, label: "CI", markerRadius: 4.2, markerStroke: 2.6, labelDx: 14, labelDy: -10 }
+    { key: "li", color: palette.blue, width: 2.7, label: "몰입지수", markerRadius: 4.8, markerStroke: 2.8, labelDx: -18, labelDy: -12, fontSize: "12" },
+    { key: "oiLine", color: palette.orange, width: 2.7, label: "오션WAY지수", markerRadius: 4.6, markerStroke: 2.8, labelDx: 0, labelDy: -16, fontSize: "12" },
+    { key: "liLine", color: palette.green, width: 2.9, label: "리더십지수", markerRadius: 4.8, markerStroke: 3, labelDx: 0, labelDy: -12, fontSize: "12" },
+    { key: "ciLine", color: palette.purpleLight, width: 2.7, label: "협업지수", markerRadius: 4.6, markerStroke: 2.8, labelDx: 18, labelDy: -10, fontSize: "12" }
   ];
 
   series.forEach((item) => {
@@ -6836,7 +7487,7 @@ function renderBusinessIndexLineChart(rows) {
         x: pointX + item.labelDx,
         y: pointY + item.labelDy,
         fill: item.color,
-        "font-size": item.key === "liLine" ? "12" : "11.5",
+        "font-size": item.fontSize || "11.5",
         "font-weight": "800",
         "text-anchor": "middle"
       });
@@ -6945,7 +7596,6 @@ function renderBusinessIndexSection() {
     ]
   });
 
-  renderBusinessIndexBarChart(rows);
   renderBusinessIndexLineChart(rows);
   renderBusinessIndexTable(tableRows);
 }
