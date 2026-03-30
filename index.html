@@ -2386,6 +2386,15 @@
     table-layout: fixed;
   }
 
+  .business-index-table thead th,
+  .pattern-table thead th {
+    position: sticky;
+    top: 0;
+    z-index: 24;
+    background: var(--surface2);
+    box-shadow: 0 1px 0 rgba(var(--black-rgb), 0.06), 0 8px 18px rgba(var(--black-rgb), 0.04);
+  }
+
   .business-index-table th,
   .business-index-table td {
     padding: 9px 8px;
@@ -3240,9 +3249,13 @@
 
   .compare-table-wrap {
     margin-top: 12px;
-    overflow: hidden;
+    overflow: auto;
+    max-height: min(68vh, 720px);
     border: 1px solid var(--border);
     border-radius: 14px;
+    position: relative;
+    background: rgba(255, 255, 255, 0.92);
+    overscroll-behavior: contain;
   }
 
   .business-index-table th:first-child,
@@ -4723,10 +4736,10 @@
   </div>
 </div>
 
-<script src="assets/business-unit-detail-data.js?v=20260327-1"></script>
-<script src="assets/business-unit-production-data.js?v=20260327-1"></script>
-<script src="assets/business-unit-detail-overlay.js?v=20260327-1"></script>
-<script src="assets/business-barrier-analysis.js?v=20260327-1"></script>
+<script src="assets/business-unit-detail-data.js?v=20260330-1"></script>
+<script src="assets/business-unit-production-data.js?v=20260330-1"></script>
+<script src="assets/business-unit-detail-overlay.js?v=20260330-1"></script>
+<script src="assets/business-barrier-analysis.js?v=20260330-1"></script>
 <script>
 const contentEl = document.querySelector(".content");
 const SVG_NS = "http://www.w3.org/2000/svg";
@@ -4951,18 +4964,11 @@ const businessDetailSectionIds = [
 const businessDetailColumnGroups = {
   summary: ["division_name", "구분", "팀", "응답인원", "응답률", "몰입지수", "조직몰입", "업무몰입", "OI", "safety", "operation", "tech", "LI", "CI"],
   detail: ["division_name", "구분", "팀", "회사자랑", "존중", "입사추천", "개인희생", "조직공감력", "직무유연성", "업무활력", "역할인지", "성장노력", "성장경험", "성과인정", "잠재력발휘"],
-  oi: ["division_name", "구분", "팀", "OI", "OI1", "OI2", "OI3", "OI4", "OI5"],
+  oi: ["division_name", "구분", "팀", "OI", "OI1", "OI2", "OI3", "OI4", "OI5", "safety", "safety01", "safety02", "safety03", "operation", "operation01", "operation02", "operation03", "operation04", "operation05", "tech", "tech01", "tech02", "tech03"],
   li: ["division_name", "구분", "팀", "LI", "LI1", "LI2", "LI3", "LI4", "LI5"],
   ci: ["division_name", "구분", "팀", "CI", "CI1", "CI2", "CI3", "CI4", "CI5"]
 };
 const businessDetailColumnGroupOverrides = {
-  "biz-merchant": {
-    summary: ["division_name", "구분", "팀", "응답률", "몰입지수", "조직몰입", "업무몰입", "OI", "LI", "CI"],
-    detail: ["division_name", "구분", "팀", "회사자랑", "존중", "입사추천", "희생", "조직공감력", "직무유연성", "활력", "아침출근", "업무를통한성장", "나에대한기대", "성과인정기대", "WAY실천노력"],
-    oi: ["division_name", "구분", "팀", "OI", "OI1", "OI2", "OI3", "OI4", "OI5"],
-    li: ["division_name", "구분", "팀", "LI", "LI1", "LI2", "LI3", "LI4", "LI5"],
-    ci: ["division_name", "구분", "팀", "CI", "CI1", "CI2", "CI3", "CI4", "CI5"]
-  },
   "biz-production": {
     summary: ["division_name", "구분", "팀", "응답인원", "응답률", "몰입지수", "조직몰입", "업무몰입", "OI", "LI", "CI"],
     detail: ["division_name", "구분", "팀", "회사자랑", "존중", "입사추천", "희생", "조직공감력", "직무유연성", "활력", "아침출근", "업무를통한성장", "나에대한기대", "성과인정기대", "WAY실천노력"],
@@ -4975,6 +4981,16 @@ const businessDetailHeaderLabelMap = {
   division_name: "사업부",
   구분: "담당명",
   팀: "팀"
+};
+const businessDetailSectionDisplayNameMap = {
+  "biz-merchant": "상선사업부",
+  "biz-obu": "EPU",
+  "biz-special": "특수선사업부",
+  "biz-manufacturing": "제조총괄&CSHO",
+  "biz-ax": "AX사업부",
+  "biz-strategy": "제품전략기술원",
+  "biz-support": "경영지원",
+  "biz-production": "생산직"
 };
 
 const demographicSections = [
@@ -5723,7 +5739,16 @@ function buildBusinessDetailDepartmentAggregateRow(sourceRow, teamRows) {
   if (!teamRows.length) return sourceRow;
 
   const prototypeRow = sourceRow || teamRows[0] || {};
-  const aggregateRow = Object.keys(prototypeRow).reduce((acc, key) => {
+  const allKeys = [];
+  [sourceRow || {}, ...teamRows].forEach((row) => {
+    Object.keys(row || {}).forEach((key) => {
+      if (!allKeys.includes(key)) {
+        allKeys.push(key);
+      }
+    });
+  });
+
+  const aggregateRow = allKeys.reduce((acc, key) => {
     acc[key] = "";
     return acc;
   }, {});
@@ -5735,7 +5760,7 @@ function buildBusinessDetailDepartmentAggregateRow(sourceRow, teamRows) {
   const weightColumn = getBusinessDetailWeightColumn(prototypeRow);
   const hasWeights = weightColumn && teamRows.some((row) => (toFiniteNumber(row[weightColumn]) ?? 0) > 0);
 
-  Object.keys(prototypeRow).forEach((key) => {
+  allKeys.forEach((key) => {
     if (["division_name", "구분", "팀"].includes(key)) return;
 
     if (key === weightColumn) {
@@ -5779,54 +5804,81 @@ function normalizeBusinessDetailDepartmentRows(sectionId, rows) {
     .forEach((row) => {
       const key = getBusinessDetailDepartmentKey(row);
       if (!grouped.has(key)) {
-        grouped.set(key, { departmentRow: null, teamRows: [] });
+        grouped.set(key, []);
         order.push(key);
       }
-
-      const bucket = grouped.get(key);
-      if (isBusinessDetailTeamRow(row)) {
-        bucket.teamRows.push(row);
-      } else if (!bucket.departmentRow) {
-        bucket.departmentRow = row;
-      }
+      grouped.get(key).push({ ...row });
     });
 
+  const departmentRowsByKey = new Map();
+  const teamRowsByKey = new Map();
+
+  order.forEach((key) => {
+    const bucketRows = grouped.get(key) || [];
+    const visibleRows = bucketRows.filter((row) => hasBusinessDetailVisibleData(row));
+    const seedRow = visibleRows[0] || bucketRows[0] || {};
+
+    const teamRows = visibleRows.filter((row) => {
+      const teamLabel = normalizeBusinessLabel(row["팀"]);
+      const departmentLabel = normalizeBusinessLabel(row["구분"]);
+      if (!teamLabel || teamLabel === "(전체)") return false;
+      if (visibleRows.length <= 1 && teamLabel === departmentLabel) return false;
+      return true;
+    });
+
+    const aggregateSourceRows = teamRows.length ? teamRows : visibleRows;
+    const departmentRow = aggregateSourceRows.length
+      ? buildBusinessDetailDepartmentAggregateRow(
+          {
+            ...seedRow,
+            division_name: seedRow["division_name"] || businessDetailSectionDisplayNameMap[sectionId] || "",
+            구분: seedRow["구분"] || "",
+            팀: seedRow["구분"] || seedRow["팀"] || ""
+          },
+          aggregateSourceRows
+        )
+      : null;
+
+    if (!departmentRow || !hasBusinessDetailVisibleData(departmentRow)) return;
+
+    departmentRow.__rowType = "department";
+    departmentRow["팀"] = departmentRow["구분"] || departmentRow["팀"] || "";
+    departmentRowsByKey.set(key, departmentRow);
+    teamRowsByKey.set(
+      key,
+      teamRows
+        .filter((row) => hasBusinessDetailVisibleData(row))
+        .map((row) => ({ ...row, __rowType: "team" }))
+    );
+  });
+
   const normalized = [];
-  const overlayTotalRow = getBusinessDetailOverlayTotalRow(sectionId);
-  const totalRow = overlayTotalRow
-    ? mergeBusinessDetailRows(totals[0] || {}, overlayTotalRow)
+  const departmentRows = [...departmentRowsByKey.values()];
+  const computedTotalRow = departmentRows.length
+    ? buildBusinessDetailDepartmentAggregateRow(
+        {
+          ...departmentRows[0],
+          division_name: businessDetailSectionDisplayNameMap[sectionId] || departmentRows[0]?.["division_name"] || "",
+          구분: "(전체)",
+          팀: "(전체)"
+        },
+        departmentRows
+      )
+    : null;
+  const totalRow = computedTotalRow
+    ? mergeBusinessDetailRows(computedTotalRow, totals[0] || null)
     : totals[0] || null;
 
   if (totalRow) {
+    totalRow.__rowType = "total";
     normalized.push(totalRow);
   }
 
   order.forEach((key) => {
-    const bucket = grouped.get(key);
-    if (!bucket) return;
-
-    const seedRow = bucket.departmentRow || bucket.teamRows[0] || {};
-    const overlayDepartmentRow = getBusinessDetailOverlayRow(
-      sectionId,
-      seedRow["division_name"],
-      seedRow["구분"]
-    );
-    const hasDepartmentMetrics = bucket.departmentRow && hasBusinessDetailPrimaryMetrics(bucket.departmentRow);
-    const fallbackDepartmentRow = hasDepartmentMetrics
-      ? bucket.departmentRow
-      : bucket.teamRows.length
-        ? buildBusinessDetailDepartmentAggregateRow(bucket.departmentRow, bucket.teamRows)
-        : bucket.departmentRow;
-
-    const departmentRow = overlayDepartmentRow
-      ? mergeBusinessDetailRows(fallbackDepartmentRow || seedRow, overlayDepartmentRow)
-      : fallbackDepartmentRow;
-
-    if (departmentRow) {
-      normalized.push(departmentRow);
-    }
-
-    normalized.push(...bucket.teamRows);
+    const departmentRow = departmentRowsByKey.get(key);
+    if (!departmentRow) return;
+    normalized.push(departmentRow);
+    normalized.push(...(teamRowsByKey.get(key) || []));
   });
 
   return normalized;
@@ -5840,6 +5892,10 @@ function normalizeBusinessLabel(label) {
 }
 
 function formatAllBusinessCell(column, value) {
+  if (value === undefined || value === null) {
+    return "";
+  }
+
   if (column === "division_name" || column === "구분" || column === "팀") {
     return escapeHtml(normalizeBusinessLabel(value));
   }
@@ -5877,6 +5933,8 @@ function getBusinessDetailDepartmentKey(row) {
 }
 
 function isBusinessDetailTeamRow(row) {
+  if (row?.__rowType === "team") return true;
+  if (row?.__rowType === "department" || row?.__rowType === "total") return false;
   if (isBusinessDetailTotalRow(row)) return false;
 
   const teamLabel = normalizeBusinessLabel(row["팀"]);
@@ -5886,6 +5944,8 @@ function isBusinessDetailTeamRow(row) {
 }
 
 function isBusinessDetailDepartmentRow(row) {
+  if (row?.__rowType === "department") return true;
+  if (row?.__rowType === "team" || row?.__rowType === "total") return false;
   return !isBusinessDetailTotalRow(row) && !isBusinessDetailTeamRow(row);
 }
 
@@ -6055,7 +6115,7 @@ function renderAllBusinessSection() {
 
 function getBusinessDetailDisplayRows(rows) {
   const totalRow = rows.find((row) => row["구분"] === "(전체)");
-  const detailRows = rows.filter((row) => row["구분"] !== "(전체)");
+  const detailRows = rows.filter((row) => row["구분"] !== "(전체)" && hasBusinessDetailVisibleData(row));
   return totalRow ? [totalRow, ...detailRows] : detailRows;
 }
 
@@ -6090,6 +6150,28 @@ function isBusinessDetailSearchSection(sectionId) {
 
 function hasBusinessDetailScore(row) {
   return toFiniteNumber(row["몰입지수"]) !== null;
+}
+
+function hasBusinessDetailVisibleData(row) {
+  if (isBusinessDetailTotalRow(row)) return true;
+  if (hasBusinessDetailScore(row)) return true;
+
+  const responseCount = toFiniteNumber(row["응답인원"] ?? row["응답자수"]);
+  if (responseCount !== null && responseCount > 0) return true;
+
+  const responseRate = toFiniteNumber(row["응답률"]);
+  if (responseRate !== null && responseRate > 0) return true;
+
+  return [
+    "조직몰입",
+    "업무몰입",
+    "OI",
+    "LI",
+    "CI",
+    "safety",
+    "operation",
+    "tech"
+  ].some((key) => toFiniteNumber(row[key]) !== null);
 }
 
 function getBusinessDetailRowKey(row) {
