@@ -55,6 +55,222 @@
     overflow: hidden;
   }
 
+  body.auth-locked .top-nav,
+  body.auth-locked .main {
+    filter: blur(10px) saturate(0.92);
+    transform: scale(0.995);
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .login-gate {
+    position: fixed;
+    inset: 0;
+    z-index: 3000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 28px;
+    background:
+      radial-gradient(circle at 20% 18%, rgba(var(--orange-rgb), 0.24), transparent 28%),
+      radial-gradient(circle at 82% 14%, rgba(var(--purple-rgb), 0.26), transparent 28%),
+      radial-gradient(circle at 72% 82%, rgba(var(--blue-rgb), 0.20), transparent 24%),
+      linear-gradient(135deg, rgba(6, 24, 62, 0.88), rgba(18, 58, 132, 0.82));
+    backdrop-filter: blur(18px);
+  }
+
+  .login-gate[hidden] {
+    display: none;
+  }
+
+  .login-card {
+    width: min(560px, 100%);
+    padding: 34px 34px 30px;
+    border-radius: 32px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.97), rgba(245, 248, 252, 0.95));
+    box-shadow:
+      0 24px 60px rgba(0, 0, 0, 0.24),
+      inset 0 1px 0 rgba(255, 255, 255, 0.88);
+  }
+
+  .login-brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 22px;
+  }
+
+  .login-brand-mark {
+    width: 66px;
+    height: 50px;
+    object-fit: contain;
+    filter: drop-shadow(0 10px 18px rgba(var(--orange-rgb), 0.16));
+  }
+
+  .login-kicker {
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: 0.16em;
+    color: var(--text3);
+    text-transform: uppercase;
+  }
+
+  .login-title {
+    margin-top: 8px;
+    font-size: 34px;
+    line-height: 1.22;
+    font-weight: 900;
+    color: var(--navy);
+    word-break: keep-all;
+  }
+
+  .login-title-accent {
+    display: block;
+    margin-top: 4px;
+    background: linear-gradient(90deg, var(--orange), var(--purple));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .login-subtitle {
+    margin-top: 14px;
+    font-size: 14px;
+    line-height: 1.75;
+    color: var(--text2);
+    word-break: keep-all;
+  }
+
+  .login-form {
+    margin-top: 24px;
+    display: grid;
+    gap: 14px;
+  }
+
+  .login-field {
+    display: grid;
+    gap: 8px;
+  }
+
+  .login-label {
+    font-size: 12px;
+    font-weight: 900;
+    color: var(--text2);
+    letter-spacing: 0.02em;
+  }
+
+  .login-select,
+  .login-password {
+    width: 100%;
+    height: 58px;
+    padding: 0 18px;
+    border-radius: 18px;
+    border: 1px solid rgba(var(--blue-rgb), 0.14);
+    background: rgba(255, 255, 255, 0.94);
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.82);
+  }
+
+  .login-password-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  .login-password-wrap .login-password {
+    padding-right: 58px;
+  }
+
+  .login-password-toggle {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 12px;
+    background: transparent;
+    color: var(--text3);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease;
+  }
+
+  .login-password-toggle:hover {
+    background: rgba(var(--blue-rgb), 0.08);
+    color: var(--navy);
+  }
+
+  .login-password-toggle svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .login-select:focus,
+  .login-password:focus {
+    outline: none;
+    border-color: rgba(var(--orange-rgb), 0.55);
+    box-shadow: 0 0 0 4px rgba(var(--orange-rgb), 0.12);
+  }
+
+  .login-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    margin-top: 6px;
+  }
+
+  .login-password-panel {
+    display: grid;
+    gap: 14px;
+    margin-top: 6px;
+  }
+
+  .login-password-panel[hidden] {
+    display: none !important;
+  }
+
+  .login-hint {
+    font-size: 12px;
+    line-height: 1.6;
+    color: var(--text3);
+  }
+
+  .login-button {
+    min-width: 150px;
+    height: 56px;
+    padding: 0 22px;
+    border: none;
+    border-radius: 18px;
+    background: linear-gradient(135deg, var(--orange), #ff9c59);
+    color: #FFFFFF;
+    font-size: 16px;
+    font-weight: 900;
+    letter-spacing: 0.02em;
+    cursor: pointer;
+    box-shadow: 0 16px 30px rgba(var(--orange-rgb), 0.24);
+  }
+
+  .login-button:hover {
+    transform: translateY(-1px);
+  }
+
+  .login-error {
+    min-height: 20px;
+    font-size: 12px;
+    font-weight: 800;
+    color: #D9422F;
+    padding-left: 2px;
+  }
+
   .top-nav {
     position: fixed;
     top: 0;
@@ -761,6 +977,36 @@
     width: 18px !important;
     min-width: 18px !important;
     max-width: 18px !important;
+  }
+
+  .business-index-table.has-header-groups {
+    table-layout: fixed;
+  }
+
+  .business-index-table.has-header-groups th,
+  .business-index-table.has-header-groups td {
+    width: auto !important;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .business-index-table.has-header-groups td.business-name-cell,
+  .business-index-table.has-header-groups td.team-name-cell,
+  .business-index-table.has-header-groups thead .sub-header-row th {
+    overflow: visible;
+    text-overflow: clip;
+  }
+
+  .business-index-table.has-header-groups.has-row-tree th.business-tree-col,
+  .business-index-table.has-header-groups.has-row-tree td.business-tree-col {
+    width: 20px !important;
+    min-width: 20px !important;
+    max-width: 20px !important;
+  }
+
+  .business-index-table.has-header-groups thead .group-header-row th {
+    overflow: visible;
+    text-overflow: clip;
   }
 
   .card {
@@ -2419,6 +2665,59 @@
     text-align: center;
   }
 
+  .business-index-table.has-header-groups thead .group-header-row th {
+    top: 0;
+    z-index: 26;
+    padding: 8px 6px;
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: 0.05em;
+    color: var(--text);
+    background: linear-gradient(180deg, rgba(var(--sky-rgb), 0.16), rgba(255, 255, 255, 0.98));
+    border-bottom: 1px solid var(--border);
+    box-shadow: 0 1px 0 rgba(var(--black-rgb), 0.04);
+  }
+
+  .business-index-table.has-header-groups thead .group-header-row th.group-safety {
+    color: var(--orange);
+    background: linear-gradient(180deg, rgba(var(--orange-rgb), 0.18), rgba(255, 255, 255, 0.98));
+    box-shadow: inset 0 3px 0 rgba(var(--orange-rgb), 0.95), 0 1px 0 rgba(var(--black-rgb), 0.04);
+  }
+
+  .business-index-table.has-header-groups thead .group-header-row th.group-org {
+    color: var(--navy);
+    background: linear-gradient(180deg, rgba(var(--navy-rgb), 0.18), rgba(255, 255, 255, 0.98));
+    box-shadow: inset 0 3px 0 rgba(var(--navy-rgb), 0.95), 0 1px 0 rgba(var(--black-rgb), 0.04);
+  }
+
+  .business-index-table.has-header-groups thead .group-header-row th.group-work {
+    color: var(--green);
+    background: linear-gradient(180deg, rgba(var(--green-rgb), 0.15), rgba(255, 255, 255, 0.98));
+    box-shadow: inset 0 3px 0 rgba(var(--green-rgb), 0.92), 0 1px 0 rgba(var(--black-rgb), 0.04);
+  }
+
+  .business-index-table.has-header-groups thead .group-header-row th.group-operation {
+    color: var(--blue);
+    background: linear-gradient(180deg, rgba(var(--blue-rgb), 0.16), rgba(255, 255, 255, 0.98));
+    box-shadow: inset 0 3px 0 rgba(var(--blue-rgb), 0.92), 0 1px 0 rgba(var(--black-rgb), 0.04);
+  }
+
+  .business-index-table.has-header-groups thead .group-header-row th.group-tech {
+    color: var(--green);
+    background: linear-gradient(180deg, rgba(var(--green-rgb), 0.15), rgba(255, 255, 255, 0.98));
+    box-shadow: inset 0 3px 0 rgba(var(--green-rgb), 0.92), 0 1px 0 rgba(var(--black-rgb), 0.04);
+  }
+
+  .business-index-table.has-header-groups thead .group-header-row th.group-spacer {
+    color: transparent;
+    background: linear-gradient(180deg, rgba(var(--sky-rgb), 0.08), rgba(255, 255, 255, 0.98));
+  }
+
+  .business-index-table.has-header-groups thead .sub-header-row th {
+    top: 38px;
+    z-index: 25;
+  }
+
   .all-business-aggregate-row {
     background: linear-gradient(180deg, rgba(var(--purple-rgb), 0.08), rgba(255, 255, 255, 0.98));
   }
@@ -2730,6 +3029,22 @@
     background: #FFFFFF;
   }
 
+  .barrier-theme-row.interactive {
+    cursor: pointer;
+    transition: transform 0.16s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+  }
+
+  .barrier-theme-row.interactive:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 28px rgba(var(--black-rgb), 0.06);
+    border-color: rgba(var(--orange-rgb), 0.2);
+  }
+
+  .barrier-theme-row.interactive:focus-visible {
+    outline: 3px solid rgba(var(--orange-rgb), 0.28);
+    outline-offset: 2px;
+  }
+
   .barrier-theme-side {
     padding: 16px 14px;
     border-right: 1px solid var(--border);
@@ -2843,6 +3158,22 @@
     border-left: 3px solid rgba(var(--orange-rgb), 0.22);
   }
 
+  .barrier-theme-example-preview {
+    display: -webkit-box;
+    margin-top: 4px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+  }
+
+  .barrier-theme-hint {
+    margin-top: 12px;
+    font-size: 11px;
+    font-weight: 900;
+    color: var(--text3);
+  }
+
   .barrier-panel.office .barrier-theme-example {
     border-left-color: rgba(var(--blue-rgb), 0.22);
   }
@@ -2861,6 +3192,238 @@
 
   .barrier-panel.purple .barrier-theme-example {
     border-left-color: rgba(var(--purple-rgb), 0.22);
+  }
+
+  .barrier-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 28px 18px;
+    background: rgba(7, 17, 38, 0.42);
+    backdrop-filter: blur(6px);
+  }
+
+  .barrier-modal[hidden] {
+    display: none;
+  }
+
+  .barrier-modal-dialog {
+    width: min(940px, 100%);
+    max-height: min(86vh, 980px);
+    display: grid;
+    grid-template-rows: auto auto auto auto minmax(0, 1fr);
+    overflow: hidden;
+    border-radius: 28px;
+    border: 1px solid rgba(var(--black-rgb), 0.06);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.99), rgba(248, 250, 253, 0.98));
+    box-shadow: 0 30px 70px rgba(var(--black-rgb), 0.18);
+  }
+
+  .barrier-modal-head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 20px 22px 16px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .barrier-modal-kicker {
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text3);
+  }
+
+  .barrier-modal-title {
+    margin-top: 6px;
+    font-size: 28px;
+    font-weight: 900;
+    line-height: 1.24;
+    color: var(--text);
+  }
+
+  .barrier-modal-subtitle {
+    margin-top: 8px;
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--text2);
+    word-break: keep-all;
+  }
+
+  .barrier-modal-close {
+    flex-shrink: 0;
+    width: 42px;
+    height: 42px;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.92);
+    color: var(--text2);
+    font-size: 24px;
+    line-height: 1;
+    cursor: pointer;
+  }
+
+  .barrier-modal-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 16px 22px 0;
+  }
+
+  .barrier-modal-keywords {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 14px 22px 4px;
+  }
+
+  .barrier-modal-featured {
+    margin: 10px 22px 0;
+    padding: 16px 18px;
+    border-radius: 18px;
+    border: 1px solid rgba(var(--orange-rgb), 0.18);
+    background: linear-gradient(180deg, rgba(var(--orange-rgb), 0.08), rgba(255, 255, 255, 0.98));
+  }
+
+  .barrier-modal-featured-label {
+    font-size: 12px;
+    font-weight: 900;
+    letter-spacing: 0.06em;
+    color: var(--orange);
+    margin-bottom: 10px;
+  }
+
+  .barrier-modal-featured-text {
+    font-size: 15px;
+    font-weight: 800;
+    line-height: 1.75;
+    color: var(--text);
+    word-break: keep-all;
+  }
+
+  .barrier-keyword-chip {
+    display: inline-flex;
+    align-items: center;
+    padding: 7px 10px;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: var(--surface2);
+    font-size: 11px;
+    font-weight: 900;
+    color: var(--text2);
+  }
+
+  .barrier-keyword-chip.orange {
+    color: var(--orange);
+    background: rgba(var(--orange-rgb), 0.08);
+    border-color: rgba(var(--orange-rgb), 0.18);
+  }
+
+  .barrier-keyword-chip.blue {
+    color: var(--blue);
+    background: rgba(var(--blue-rgb), 0.08);
+    border-color: rgba(var(--blue-rgb), 0.18);
+  }
+
+  .barrier-keyword-chip.green {
+    color: var(--green);
+    background: rgba(var(--green-rgb), 0.08);
+    border-color: rgba(var(--green-rgb), 0.18);
+  }
+
+  .barrier-keyword-chip.purple {
+    color: var(--purple);
+    background: rgba(var(--purple-rgb), 0.08);
+    border-color: rgba(var(--purple-rgb), 0.18);
+  }
+
+  .barrier-modal-body {
+    padding: 8px 22px 22px;
+    overflow: auto;
+  }
+
+  .barrier-modal-list-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 10px;
+  }
+
+  .barrier-modal-list-title {
+    font-size: 16px;
+    font-weight: 900;
+    color: var(--text);
+  }
+
+  .barrier-modal-list-sub {
+    font-size: 12px;
+    color: var(--text3);
+    font-weight: 800;
+  }
+
+  .barrier-modal-list {
+    display: grid;
+    gap: 12px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .barrier-modal-item {
+    display: grid;
+    grid-template-columns: 42px minmax(0, 1fr);
+    gap: 12px;
+    align-items: flex-start;
+    padding: 14px 16px;
+    border-radius: 18px;
+    border: 1px solid var(--border);
+    background: rgba(255, 255, 255, 0.92);
+  }
+
+  .barrier-modal-rank {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 14px;
+    font-size: 14px;
+    font-weight: 900;
+    color: var(--text);
+    background: rgba(var(--orange-rgb), 0.08);
+    border: 1px solid rgba(var(--orange-rgb), 0.16);
+  }
+
+  .barrier-modal-item.blue .barrier-modal-rank {
+    background: rgba(var(--blue-rgb), 0.08);
+    border-color: rgba(var(--blue-rgb), 0.16);
+  }
+
+  .barrier-modal-item.green .barrier-modal-rank {
+    background: rgba(var(--green-rgb), 0.08);
+    border-color: rgba(var(--green-rgb), 0.16);
+  }
+
+  .barrier-modal-item.purple .barrier-modal-rank {
+    background: rgba(var(--purple-rgb), 0.08);
+    border-color: rgba(var(--purple-rgb), 0.16);
+  }
+
+  .barrier-modal-text {
+    font-size: 14px;
+    line-height: 1.8;
+    color: var(--text2);
+    word-break: keep-all;
+  }
+
+  .login-scope-hidden {
+    display: none !important;
   }
 
   .business-index-table .li-cell {
@@ -3226,6 +3789,10 @@
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 14px;
     margin-top: 14px;
+  }
+
+  .demographic-single-panel {
+    grid-column: 1 / -1;
   }
 
   .demographic-compare-svg {
@@ -3912,7 +4479,42 @@
   }
 </style>
 </head>
-<body>
+<body class="auth-locked">
+<div id="loginGate" class="login-gate" aria-hidden="false">
+  <div class="login-card">
+    <div class="login-brand">
+      <img class="login-brand-mark" src="assets/hanwha-ocean-symbol.svg" alt="HANWHA OCEAN logo">
+      <div>
+        <div class="login-kicker">Hanwha Ocean Report Access</div>
+        <h1 class="login-title">
+          2026 한화
+          <span class="login-title-accent">culture survay report</span>
+        </h1>
+      </div>
+    </div>
+    <div class="login-subtitle">
+      전체 데이터를 확인하려면 아래 버튼을 누른 뒤 비밀번호를 입력해주세요.
+    </div>
+    <div class="login-form">
+      <div class="login-actions">
+        <button id="loginAllAccessButton" class="login-button" type="button">전체데이터보기</button>
+      </div>
+      <div id="loginPasswordPanel" class="login-password-panel" hidden>
+        <div class="login-field">
+          <label class="login-label" for="loginPassword">비밀번호</label>
+          <div class="login-password-wrap">
+            <input id="loginPassword" class="login-password" type="password" autocomplete="off" placeholder="비밀번호를 입력해주세요">
+            <button id="loginPasswordToggle" class="login-password-toggle" type="button" aria-label="비밀번호 보기" aria-pressed="false"></button>
+          </div>
+        </div>
+        <div class="login-actions">
+          <button id="loginConfirmButton" class="login-button" type="button">확인</button>
+        </div>
+      </div>
+      <div id="loginError" class="login-error" aria-live="polite"></div>
+    </div>
+  </div>
+</div>
 <nav class="top-nav">
   <div class="brand">
     <img class="brand-mark" src="assets/hanwha-ocean-symbol.svg" alt="HANWHA OCEAN logo">
@@ -3942,7 +4544,7 @@
             <div class="menu-title">사업부별몰입유형</div>
           </div>
           <div class="submenu-item" data-target="summary-demographic" onclick="activateSection('p1', 'summary-demographic', this)">
-            <div class="menu-title">근속/보직여부/직군/성별 몰입수준</div>
+            <div class="menu-title">근속/보직여부/직군/성별/내·외국인 몰입수준</div>
           </div>
           <div class="submenu-item" data-target="summary-all-business" onclick="activateSection('p1', 'summary-all-business', this)">
             <div class="menu-title">전체사업부</div>
@@ -4088,9 +4690,9 @@
                     <tr>
                       <th>사업부</th>
                       <th>직군</th>
+                      <th class="num">몰입지수</th>
                       <th class="num">조직몰입</th>
                       <th class="num">업무몰입</th>
-                      <th class="num">몰입지수</th>
                     </tr>
                   </thead>
                   <tbody id="businessIndexTableBody"></tbody>
@@ -4213,7 +4815,7 @@
                 </svg>
               </div>
               <div>
-                <h2 class="section-title">근속/보직여부/직군/성별 몰입수준</h2>
+                <h2 class="section-title">근속/보직여부/직군/성별/내·외국인 몰입수준</h2>
                 <p class="section-desc">인구통계와 직무 속성에 따른 몰입 수준 차이를 묶어서 보여주는 비교 섹션입니다. 표와 비교 카드 조합으로 가독성을 높이도록 설계했습니다.</p>
               </div>
             </div>
@@ -4363,6 +4965,36 @@
                       </tr>
                     </thead>
                     <tbody id="tenureCompareTableBody"></tbody>
+                  </table>
+                </div>
+              </div>
+              <div class="chart-panel demographic-single-panel">
+                <div class="chart-panel-header">
+                  <div>
+                    <div class="chart-panel-title">내·외국인 비교</div>
+                    <div class="chart-panel-sub">내·외국인별 몰입지수, 조직몰입, 업무몰입의 2026 수준을 한 화면에서 비교합니다.</div>
+                  </div>
+                  <span class="chart-unit">2026 ONLY</span>
+                </div>
+                <div class="chart-surface">
+                  <svg id="nationalityCompareChart" class="demographic-compare-svg" role="img" aria-label="내외국인별 몰입지수 조직몰입 업무몰입 비교"></svg>
+                </div>
+                <div class="business-index-legend">
+                  <div class="legend-item"><span class="legend-dot" style="background:#FF771E;"></span>몰입지수</div>
+                  <div class="legend-item"><span class="legend-dot" style="background:#1657B8;"></span>조직몰입</div>
+                  <div class="legend-item"><span class="legend-dot" style="background:#09C765;"></span>업무몰입</div>
+                </div>
+                <div class="compare-table-wrap">
+                  <table class="business-index-table" id="nationalityCompareTable">
+                    <thead>
+                      <tr>
+                        <th>구분</th>
+                        <th class="num">몰입지수</th>
+                        <th class="num">조직몰입</th>
+                        <th class="num">업무몰입</th>
+                      </tr>
+                    </thead>
+                    <tbody id="nationalityCompareTableBody"></tbody>
                   </table>
                 </div>
               </div>
@@ -4739,7 +5371,7 @@
 <script src="assets/business-unit-detail-data.js?v=20260330-2"></script>
 <script src="assets/business-unit-production-data.js?v=20260330-2"></script>
 <script src="assets/business-unit-detail-overlay.js?v=20260330-2"></script>
-<script src="assets/business-barrier-analysis.js?v=20260330-2"></script>
+<script src="assets/business-barrier-analysis.js?v=20260330-3"></script>
 <script>
 const contentEl = document.querySelector(".content");
 const SVG_NS = "http://www.w3.org/2000/svg";
@@ -4930,6 +5562,10 @@ const tenureCompareCsv = `일반직,1년 미만,0.737,0.761,0.684,0.686
 생산직,1년 미만,0.683,0.742,0.711,0.71
 생산직,20년 이상,0.681,0.666,0.681,0.662`;
 
+const nationalityCompareCsv = `구분,몰입지수,조직몰입,업무몰입
+내국인,0.688,0.681,0.695
+외국인,0.800,0.846,0.755`;
+
 const allBusinessCsv = `직군,구분,응답자수,응답률,몰입지수,조직몰입,회사자랑,존중,입사추천,개인희생,조직공감력,직무유연성,업무몰입,업무활력,역할인지,성장노력,성장경험,성과인정,잠재력발휘,OI,safety,safety01,safety02,safety03,operation,operation01,operation02,operation03,operation04,operation05,tech,tech01,tech02,tech03,LI,LI1,LI2,LI3,LI4,LI5,CI,CI1,CI2,CI3,CI4,CI5
 전체,(일반 + 생산),5678,61.054,0.690,0.683,0.694,0.670,0.653,0.622,0.747,0.714,0.696,0.713,0.784,0.826,0.772,0.623,0.458,0.712,0.640,0.521,0.669,0.730,0.711,0.774,0.535,0.754,0.829,0.663,0.784,0.675,0.860,0.816,0.633,0.750,0.433,0.592,0.721,0.672,0.657,0.749,0.783,0.465,0.655,0.635
 일반직,1. 상선사업부,639,75.265,0.717,0.702,0.693,0.743,0.631,0.609,0.795,0.743,0.732,0.695,0.822,0.872,0.836,0.657,0.513,0.772,0.637,0.474,0.707,0.731,0.804,0.884,0.670,0.876,0.869,0.723,0.851,0.762,0.919,0.872,0.699,0.800,0.527,0.670,0.761,0.737,0.746,0.795,0.881,0.587,0.748,0.720
@@ -5023,6 +5659,7 @@ const demographicSections = [
     rows: parseGenderCompareRows(genderCompareCsv)
   }
 ];
+const nationalityCompareRows = parseNationalityCompareRows(nationalityCompareCsv);
 const conclusionInsight2026Csv = `직군,몰입유형,인원수,비율
 생산직,1.고몰입형,327,15.56
 생산직,2.전문가형,278,13.23
@@ -5157,6 +5794,7 @@ const engagementBarrierGroupMeta = {
 let currentBusinessIndexFilter = "전체";
 const sortableTableState = {};
 const businessDetailSelectionState = {};
+const barrierPanelRegistry = {};
 
 function createSvgEl(tag, attrs = {}) {
   const el = document.createElementNS(SVG_NS, tag);
@@ -5596,6 +6234,22 @@ function parseGenderCompareRows(csv) {
     });
 }
 
+function parseNationalityCompareRows(csv) {
+  const lines = csv
+    .trim()
+    .split(/\n+/)
+    .map((line) => parseCsvLine(line))
+    .filter((parts) => parts.some((part) => String(part ?? "").trim()));
+
+  return lines.slice(1).map(([label, li, oi, ci]) => ({
+    label: String(label ?? "").trim(),
+    displayLabel: String(label ?? "").trim(),
+    li: Number(li) * 100,
+    oi: Number(oi) * 100,
+    ci: Number(ci) * 100
+  }));
+}
+
 function parseBusinessIndexData() {
   const [headerLine, ...bodyLines] = businessIndexCsv.trim().split(/\n+/);
   const headers = parseCsvLine(headerLine).map((header) => header.trim());
@@ -6023,31 +6677,136 @@ function renderBusinessDetailTreeToggleCell(treeState) {
   `;
 }
 
+function buildBusinessTableColumnWidths(columns, variant = "default", useTree = false) {
+  const widths = {
+    __default: variant === "summary" ? 88 : 84
+  };
+
+  if (useTree) {
+    widths.__tree = 22;
+  }
+
+  const setWidth = (column, width) => {
+    if (columns.includes(column)) {
+      widths[column] = width;
+    }
+  };
+
+  setWidth("직군", 92);
+  setWidth("division_name", variant === "detail" || variant === "oi" || variant === "li" || variant === "ci" ? 138 : 126);
+  setWidth("구분", variant === "detail" || variant === "oi" || variant === "li" || variant === "ci" ? 156 : 144);
+  setWidth("팀", variant === "detail" || variant === "oi" || variant === "li" || variant === "ci" ? 156 : 144);
+  setWidth("응답자수", 88);
+  setWidth("응답인원", 88);
+  setWidth("응답률", 82);
+  setWidth("몰입지수", 88);
+  setWidth("조직몰입", 88);
+  setWidth("업무몰입", 88);
+  setWidth("OI", 76);
+  setWidth("LI", 76);
+  setWidth("CI", 76);
+  setWidth("safety", 78);
+  setWidth("operation", 78);
+  setWidth("tech", 78);
+
+  ["회사자랑", "존중", "입사추천", "개인희생", "조직공감력", "직무유연성", "업무활력", "역할인지", "성장노력", "성장경험", "성과인정", "잠재력발휘"].forEach((column) => setWidth(column, 86));
+  ["safety01", "safety02", "safety03"].forEach((column) => setWidth(column, 84));
+  ["operation01", "operation02", "operation03", "operation04", "operation05"].forEach((column) => setWidth(column, 86));
+  ["tech01", "tech02", "tech03"].forEach((column) => setWidth(column, 92));
+  ["LI1", "LI2", "LI3", "LI4", "LI5", "CI1", "CI2", "CI3", "CI4", "CI5"].forEach((column) => setWidth(column, 88));
+
+  return widths;
+}
+
+function buildBusinessTableColgroup(columns, options = {}) {
+  const columnWidths = options.columnWidths || null;
+  if (!columnWidths) {
+    return { html: "", totalWidth: null };
+  }
+
+  const cols = [];
+  let totalWidth = 0;
+
+  const pushCol = (width) => {
+    const numericWidth = Number(width);
+    if (!Number.isFinite(numericWidth) || numericWidth <= 0) {
+      cols.push("<col>");
+      return;
+    }
+
+    totalWidth += numericWidth;
+    cols.push(`<col style="width:${numericWidth}px;min-width:${numericWidth}px;">`);
+  };
+
+  if (options.treeContext) {
+    pushCol(columnWidths.__tree || 20);
+  }
+
+  columns.forEach((column) => {
+    pushCol(columnWidths[column] || columnWidths.__default || null);
+  });
+
+  return {
+    html: cols.length ? `<colgroup>${cols.join("")}</colgroup>` : "",
+    totalWidth: totalWidth || null
+  };
+}
+
 function renderAllBusinessTable(tableId, columns, rows, options = {}) {
   const table = document.getElementById(tableId);
   if (!table) return;
 
   table.classList.remove("business-summary-table", "business-detail-table");
   table.classList.toggle("has-row-tree", Boolean(options.treeContext));
+  table.classList.toggle("has-header-groups", Boolean(options.headerGroups));
   if (options.tableClass) {
     table.classList.add(options.tableClass);
   }
 
   const treeContext = options.treeContext || null;
   const disableSort = Boolean(options.disableSort);
+  const headerGroups = options.headerGroups || null;
+  const leadingSpan = (headerGroups?.leadingColumnCount || 0) + (treeContext ? 1 : 0);
+  const effectiveColumnCount = columns.length + (treeContext ? 1 : 0);
+  const colgroup = buildBusinessTableColgroup(columns, {
+    treeContext,
+    columnWidths: options.columnWidths || null
+  });
+
+  if (colgroup.totalWidth) {
+    table.style.width = `${colgroup.totalWidth}px`;
+    table.style.minWidth = `${colgroup.totalWidth}px`;
+  } else if (headerGroups) {
+    table.style.width = "";
+    table.style.minWidth = `${Math.max(effectiveColumnCount * 118, 1880)}px`;
+  } else {
+    table.style.width = "";
+    table.style.minWidth = "";
+  }
+
+  const headerCellsHtml = columns
+    .map((column) => {
+      const displayLabel = options.labelMap?.[column] || getDisplayTableHeaderLabel(column);
+      const className = ["직군", "division_name", "구분", "팀"].includes(column) ? "" : " class=\"num\"";
+      const nosort = disableSort ? ' data-nosort="true"' : "";
+      return `<th${className}${nosort}>${disableSort ? `<span class="sort-label">${buildTableHeaderLabelHtml(displayLabel)}</span>` : escapeHtml(displayLabel)}</th>`;
+    })
+    .join("");
 
   table.innerHTML = `
+    ${colgroup.html}
     <thead>
-      <tr>
+      ${headerGroups ? `
+        <tr class="group-header-row">
+          ${leadingSpan ? `<th colspan="${leadingSpan}" class="group-spacer" data-nosort="true"></th>` : ""}
+          ${headerGroups.groups
+            .map((group) => `<th colspan="${group.colspan}" class="${escapeHtml(group.className || "")}" data-nosort="true">${escapeHtml(group.label)}</th>`)
+            .join("")}
+        </tr>
+      ` : ""}
+      <tr class="${headerGroups ? "sub-header-row" : ""}">
         ${treeContext ? '<th class="business-tree-col" data-nosort="true"></th>' : ""}
-        ${columns
-          .map((column) => {
-            const displayLabel = options.labelMap?.[column] || getDisplayTableHeaderLabel(column);
-            const className = ["직군", "division_name", "구분", "팀"].includes(column) ? "" : " class=\"num\"";
-            const nosort = disableSort ? ' data-nosort="true"' : "";
-            return `<th${className}${nosort}>${disableSort ? `<span class="sort-label">${buildTableHeaderLabelHtml(displayLabel)}</span>` : escapeHtml(displayLabel)}</th>`;
-          })
-          .join("")}
+        ${headerCellsHtml}
       </tr>
     </thead>
     <tbody>
@@ -6122,6 +6881,38 @@ function renderAllBusinessInsight(rows) {
   `;
 }
 
+function buildOIHeaderGroups(columns, leadingColumnCount) {
+  const groups = [];
+
+  if (columns.includes("safety")) {
+    const safetyColumns = ["safety", "safety01", "safety02", "safety03"].filter((column) => columns.includes(column));
+    if (safetyColumns.length) {
+      groups.push({ label: "안전", colspan: safetyColumns.length, className: "group-safety" });
+    }
+  }
+
+  if (columns.includes("operation")) {
+    const operationColumns = ["operation", "operation01", "operation02", "operation03", "operation04", "operation05"].filter((column) => columns.includes(column));
+    if (operationColumns.length) {
+      groups.push({ label: "운영", colspan: operationColumns.length, className: "group-operation" });
+    }
+  }
+
+  if (columns.includes("tech")) {
+    const techColumns = ["tech", "tech01", "tech02", "tech03"].filter((column) => columns.includes(column));
+    if (techColumns.length) {
+      groups.push({ label: "기술", colspan: techColumns.length, className: "group-tech" });
+    }
+  }
+
+  if (!groups.length) return null;
+
+  return {
+    leadingColumnCount,
+    groups
+  };
+}
+
 function renderAllBusinessSection() {
   const countLabel = document.getElementById("allBusinessCount");
   if (!countLabel) return;
@@ -6129,11 +6920,22 @@ function renderAllBusinessSection() {
   const detailCount = allBusinessRows.filter((row) => row["직군"] !== "전체" && !isAllBusinessAggregateRow(row)).length;
   countLabel.textContent = `${detailCount}개 구분`;
 
-  renderAllBusinessTable("allBusinessSummaryTable", allBusinessColumnGroups.summary, allBusinessRows);
-  renderAllBusinessTable("allBusinessDetailTable", allBusinessColumnGroups.detail, allBusinessRows);
-  renderAllBusinessTable("allBusinessOITable", allBusinessColumnGroups.oi, allBusinessRows);
-  renderAllBusinessTable("allBusinessLITable", allBusinessColumnGroups.li, allBusinessRows);
-  renderAllBusinessTable("allBusinessCITable", allBusinessColumnGroups.ci, allBusinessRows);
+  renderAllBusinessTable("allBusinessSummaryTable", allBusinessColumnGroups.summary, allBusinessRows, {
+    columnWidths: buildBusinessTableColumnWidths(allBusinessColumnGroups.summary, "summary", false)
+  });
+  renderAllBusinessTable("allBusinessDetailTable", allBusinessColumnGroups.detail, allBusinessRows, {
+    columnWidths: buildBusinessTableColumnWidths(allBusinessColumnGroups.detail, "detail", false)
+  });
+  renderAllBusinessTable("allBusinessOITable", allBusinessColumnGroups.oi, allBusinessRows, {
+    columnWidths: buildBusinessTableColumnWidths(allBusinessColumnGroups.oi, "oi", false),
+    headerGroups: buildOIHeaderGroups(allBusinessColumnGroups.oi, 3)
+  });
+  renderAllBusinessTable("allBusinessLITable", allBusinessColumnGroups.li, allBusinessRows, {
+    columnWidths: buildBusinessTableColumnWidths(allBusinessColumnGroups.li, "li", false)
+  });
+  renderAllBusinessTable("allBusinessCITable", allBusinessColumnGroups.ci, allBusinessRows, {
+    columnWidths: buildBusinessTableColumnWidths(allBusinessColumnGroups.ci, "ci", false)
+  });
   renderAllBusinessInsight(allBusinessRows);
 }
 
@@ -6699,12 +7501,34 @@ function updateBusinessDetailTables(sectionId) {
   };
   renderAllBusinessTable(`${state.prefix}SummaryTable`, columnGroups.summary, rows, {
     ...tableOptions,
-    tableClass: "business-summary-table"
+    tableClass: "business-summary-table",
+    columnWidths: buildBusinessTableColumnWidths(columnGroups.summary, "summary", Boolean(treeContext))
   });
-  renderAllBusinessTable(`${state.prefix}DetailTable`, columnGroups.detail, rows, { ...tableOptions, tableClass: "business-detail-table" });
-  renderAllBusinessTable(`${state.prefix}OITable`, columnGroups.oi, rows, tableOptions);
-  renderAllBusinessTable(`${state.prefix}LITable`, columnGroups.li, rows, tableOptions);
-  renderAllBusinessTable(`${state.prefix}CITable`, columnGroups.ci, rows, tableOptions);
+  renderAllBusinessTable(`${state.prefix}DetailTable`, columnGroups.detail, rows, {
+    ...tableOptions,
+    tableClass: "business-detail-table",
+    columnWidths: buildBusinessTableColumnWidths(columnGroups.detail, "detail", Boolean(treeContext)),
+    headerGroups: {
+      leadingColumnCount: 3,
+      groups: [
+        { label: "조직몰입", colspan: 6, className: "group-org" },
+        { label: "업무몰입", colspan: 6, className: "group-work" }
+      ]
+    }
+  });
+  renderAllBusinessTable(`${state.prefix}OITable`, columnGroups.oi, rows, {
+    ...tableOptions,
+    columnWidths: buildBusinessTableColumnWidths(columnGroups.oi, "oi", Boolean(treeContext)),
+    headerGroups: buildOIHeaderGroups(columnGroups.oi, 4)
+  });
+  renderAllBusinessTable(`${state.prefix}LITable`, columnGroups.li, rows, {
+    ...tableOptions,
+    columnWidths: buildBusinessTableColumnWidths(columnGroups.li, "li", Boolean(treeContext))
+  });
+  renderAllBusinessTable(`${state.prefix}CITable`, columnGroups.ci, rows, {
+    ...tableOptions,
+    columnWidths: buildBusinessTableColumnWidths(columnGroups.ci, "ci", Boolean(treeContext))
+  });
   renderBusinessDetailChart(sectionId, `${state.prefix}LineChart`, rows);
   renderBusinessDetailHighlights(sectionId, `${state.prefix}Highlights`, rows);
   renderBusinessDetailInsight(sectionId, `${state.prefix}Insight`, state.title, rows);
@@ -7050,7 +7874,235 @@ function getBarrierToneClass(tone) {
   return "blue";
 }
 
-function renderBarrierPanel(meta, rows) {
+function registerBarrierPanel(panelKey, meta, rows) {
+  if (!panelKey) return;
+  barrierPanelRegistry[panelKey] = {
+    meta: { ...meta },
+    rows: Array.isArray(rows) ? rows : []
+  };
+}
+
+function splitBarrierKeywords(keywords) {
+  return String(keywords || "")
+    .split(/[,\u00b7]/)
+    .map((item) => item.trim())
+    .filter(Boolean);
+}
+
+function splitBarrierThemeTerms(row) {
+  return [row.themeKo, row.themeEn]
+    .flatMap((value) =>
+      String(value || "")
+        .replace(/[&·]/g, " ")
+        .split(/[\s,/()]+/)
+    )
+    .map((item) => item.trim())
+    .filter((item) => item.length > 1);
+}
+
+function tokenizeBarrierOpinion(text) {
+  return (String(text || "").match(/[가-힣A-Za-z0-9]+/g) || [])
+    .map((token) => token.toLowerCase())
+    .filter((token) => token.length > 1);
+}
+
+function normalizeBarrierOpinions(row) {
+  const raw =
+    (Array.isArray(row.opinions) && row.opinions) ||
+    (Array.isArray(row.examples) && row.examples) ||
+    (Array.isArray(row.comments) && row.comments) ||
+    (row.example ? [row.example] : []);
+
+  const values = raw
+    .flatMap((item) => {
+      if (typeof item === "string") return [item];
+      if (item && typeof item.text === "string") return [item.text];
+      if (item && typeof item.example === "string") return [item.example];
+      return [];
+    })
+    .map((item) => String(item || "").trim())
+    .filter(Boolean);
+
+  return [...new Set(values)];
+}
+
+function scoreBarrierOpinion(text, row) {
+  const source = String(text || "");
+  const normalizedText = source.toLowerCase();
+  const tokens = tokenizeBarrierOpinion(source);
+  const tokenSet = new Set(tokens);
+  let score = 0;
+
+  splitBarrierKeywords(row.keywords).forEach((keyword) => {
+    const lowered = keyword.toLowerCase();
+    if (!lowered) return;
+    if (normalizedText.includes(lowered)) score += 8;
+    if (tokenSet.has(lowered)) score += 4;
+    tokens.forEach((token) => {
+      if (token !== lowered && token.includes(lowered)) {
+        score += 1;
+      }
+    });
+  });
+
+  splitBarrierThemeTerms(row).forEach((term) => {
+    const lowered = term.toLowerCase();
+    if (normalizedText.includes(lowered)) score += 2;
+  });
+
+  score += Math.min(tokens.length, 40) * 0.03;
+  return score;
+}
+
+function getSortedBarrierOpinions(row) {
+  return normalizeBarrierOpinions(row)
+    .map((text, index) => ({
+      text,
+      index,
+      score: scoreBarrierOpinion(text, row)
+    }))
+    .sort((a, b) => b.score - a.score || b.text.length - a.text.length || a.index - b.index);
+}
+
+function ensureBarrierThemeModal() {
+  let modal = document.getElementById("barrierThemeModal");
+  if (modal) return modal;
+
+  modal = document.createElement("div");
+  modal.id = "barrierThemeModal";
+  modal.className = "barrier-modal";
+  modal.hidden = true;
+  modal.innerHTML = `
+    <div class="barrier-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="barrierModalTitle">
+      <div class="barrier-modal-head">
+        <div>
+          <div class="barrier-modal-kicker" id="barrierModalKicker"></div>
+          <div class="barrier-modal-title" id="barrierModalTitle"></div>
+          <div class="barrier-modal-subtitle" id="barrierModalSubtitle"></div>
+        </div>
+        <button type="button" class="barrier-modal-close" aria-label="닫기" data-barrier-close>&times;</button>
+      </div>
+      <div class="barrier-modal-meta" id="barrierModalMeta"></div>
+      <div class="barrier-modal-keywords" id="barrierModalKeywords"></div>
+      <div class="barrier-modal-featured" id="barrierModalFeatured" hidden>
+        <div class="barrier-modal-featured-label">대표 의견</div>
+        <div class="barrier-modal-featured-text" id="barrierModalFeaturedText"></div>
+      </div>
+      <div class="barrier-modal-body">
+        <div class="barrier-modal-list-head">
+          <div class="barrier-modal-list-title">의견 목록</div>
+          <div class="barrier-modal-list-sub">핵심 키워드 유사도순 정렬</div>
+        </div>
+        <ol class="barrier-modal-list" id="barrierModalList"></ol>
+      </div>
+    </div>
+  `;
+
+  modal.addEventListener("click", (event) => {
+    if (event.target === modal || event.target.closest("[data-barrier-close]")) {
+      closeBarrierThemeModal();
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && !modal.hidden) {
+      closeBarrierThemeModal();
+    }
+  });
+
+  document.body.appendChild(modal);
+  return modal;
+}
+
+function closeBarrierThemeModal() {
+  const modal = document.getElementById("barrierThemeModal");
+  if (!modal) return;
+  modal.hidden = true;
+  document.body.style.overflow = "";
+}
+
+function openBarrierThemeModal(panelKey, themeIndex) {
+  const panel = barrierPanelRegistry[panelKey];
+  const row = panel?.rows?.[themeIndex];
+  if (!panel || !row) return;
+
+  const modal = ensureBarrierThemeModal();
+  const toneClass = getBarrierToneClass(panel.meta.tone);
+  const opinions = getSortedBarrierOpinions(row);
+  const exampleText = String(row.example || "").trim();
+  const keywords = splitBarrierKeywords(row.keywords);
+  const featuredEl = modal.querySelector("#barrierModalFeatured");
+  const featuredTextEl = modal.querySelector("#barrierModalFeaturedText");
+  const listOpinions = exampleText
+    ? opinions.filter((item) => String(item.text || "").trim() !== exampleText)
+    : opinions;
+
+  modal.querySelector("#barrierModalKicker").textContent = panel.meta.kicker || "ENGAGEMENT BARRIERS";
+  modal.querySelector("#barrierModalTitle").textContent = row.themeKo || row.themeEn || "의견 보기";
+  modal.querySelector("#barrierModalSubtitle").textContent = row.themeEn
+    ? `${row.themeEn} 관련 의견을 핵심 키워드 기준으로 정리했습니다.`
+    : "해당 테마와 가까운 의견을 정리했습니다.";
+
+  modal.querySelector("#barrierModalMeta").innerHTML = `
+    <span class="barrier-chip ${escapeHtml(toneClass)}">응답 비중 ${escapeHtml(formatPercent(row.sharePercent))}</span>
+    <span class="barrier-chip">${escapeHtml(formatCount(row.count))}건</span>
+    <span class="barrier-chip">${escapeHtml(formatCount(opinions.length))}개 의견 표시</span>
+  `;
+
+  modal.querySelector("#barrierModalKeywords").innerHTML = keywords
+    .map((keyword) => `<span class="barrier-keyword-chip ${escapeHtml(toneClass)}">${escapeHtml(keyword)}</span>`)
+    .join("");
+
+  if (featuredEl && featuredTextEl) {
+    if (exampleText) {
+      featuredTextEl.textContent = exampleText;
+      featuredEl.hidden = false;
+    } else {
+      featuredTextEl.textContent = "";
+      featuredEl.hidden = true;
+    }
+  }
+
+  modal.querySelector("#barrierModalList").innerHTML = listOpinions.length
+    ? listOpinions
+        .map(
+          (item, index) => `
+            <li class="barrier-modal-item ${escapeHtml(toneClass)}">
+              <div class="barrier-modal-rank">${index + 1}</div>
+              <div class="barrier-modal-text">${escapeHtml(item.text)}</div>
+            </li>
+          `
+        )
+        .join("")
+    : `
+        <li class="barrier-modal-item ${escapeHtml(toneClass)}">
+          <div class="barrier-modal-rank">-</div>
+          <div class="barrier-modal-text">현재 연결된 자산에는 세부 의견 목록이 없습니다.</div>
+        </li>
+      `;
+
+  modal.hidden = false;
+  document.body.style.overflow = "hidden";
+}
+
+function bindBarrierThemeCards(root) {
+  if (!root) return;
+
+  root.querySelectorAll(".barrier-theme-row[data-barrier-panel-key]").forEach((card) => {
+    card.addEventListener("click", () => {
+      openBarrierThemeModal(card.dataset.barrierPanelKey, Number(card.dataset.barrierThemeIndex || 0));
+    });
+
+    card.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        openBarrierThemeModal(card.dataset.barrierPanelKey, Number(card.dataset.barrierThemeIndex || 0));
+      }
+    });
+  });
+}
+
+function renderBarrierPanel(meta, rows, panelKey) {
   if (!meta || !rows.length) return "";
 
   const toneClass = getBarrierToneClass(meta.tone);
@@ -7067,8 +8119,8 @@ function renderBarrierPanel(meta, rows) {
       <div class="barrier-panel-body">
         ${rows
           .map(
-            (row) => `
-              <article class="barrier-theme-row">
+            (row, index) => `
+              <article class="barrier-theme-row interactive" data-barrier-panel-key="${escapeHtml(panelKey || "")}" data-barrier-theme-index="${index}" tabindex="0" role="button" aria-label="${escapeHtml(`${row.themeKo} 의견 보기`)}">
                 <div class="barrier-theme-side">
                   <div class="barrier-theme-en">${escapeHtml(row.themeEn)}</div>
                   <div class="barrier-theme-ko">${escapeHtml(row.themeKo)}</div>
@@ -7079,7 +8131,8 @@ function renderBarrierPanel(meta, rows) {
                     <span class="barrier-chip">${escapeHtml(formatCount(row.count))}건</span>
                   </div>
                   <div class="barrier-theme-keywords"><strong>핵심 키워드</strong> ${escapeHtml(row.keywords)}</div>
-                  <div class="barrier-theme-example"><strong>대표 의견</strong> ${escapeHtml(row.example)}</div>
+                  <div class="barrier-theme-example"><strong>대표 의견</strong><span class="barrier-theme-example-preview">${escapeHtml(row.example)}</span></div>
+                  <div class="barrier-theme-hint">클릭하면 테마별 의견을 팝업으로 볼 수 있습니다.</div>
                 </div>
               </article>
             `
@@ -7094,25 +8147,32 @@ function renderEngagementBarrierSection() {
   const target = document.getElementById("conclusionBarrierContent");
   if (!target) return;
 
+  const assetGroups = window.businessBarrierAnalysis?.overallGroups || [];
+  const assetGroupMap = Object.fromEntries(assetGroups.map((group) => [group.group, group]));
   const groupOrder = ["생산직", "일반직"];
   target.innerHTML = `
     <div class="barrier-dashboard">
       ${groupOrder
         .map((group) => {
-          const meta = engagementBarrierGroupMeta[group];
-          const rows = engagementBarrierRows.filter((row) => row.group === group);
+          const assetGroup = assetGroupMap[group];
+          const meta = assetGroup || engagementBarrierGroupMeta[group];
+          const rows = assetGroup?.rows || engagementBarrierRows.filter((row) => row.group === group);
           if (!meta || !rows.length) return "";
+          const panelKey = `engagement-${group}`;
+          registerBarrierPanel(panelKey, meta, rows);
           return renderBarrierPanel(
             {
               ...meta,
-              badgeLabel: `${rows.length}개 테마`
+              badgeLabel: assetGroup ? `${formatCount(assetGroup.responseCount)}건 응답` : `${rows.length}개 테마`
             },
-            rows
+            rows,
+            panelKey
           );
         })
         .join("")}
     </div>
   `;
+  bindBarrierThemeCards(target);
 }
 
 function renderBusinessBarrierSections() {
@@ -7156,6 +8216,7 @@ function renderBusinessBarrierSections() {
   sections.forEach((section) => {
     const content = document.getElementById(`${section.sectionId}Content`);
     if (!content) return;
+    registerBarrierPanel(section.sectionId, section, section.rows || []);
 
     const panelHtml = renderBarrierPanel(
       {
@@ -7164,10 +8225,12 @@ function renderBusinessBarrierSections() {
         tone: section.tone,
         badgeLabel: `${formatCount(section.responseCount)}건 응답`
       },
-      section.rows || []
+      section.rows || [],
+      section.sectionId
     );
 
     content.innerHTML = `<div class="barrier-dashboard single">${panelHtml}</div>`;
+    bindBarrierThemeCards(content);
   });
 }
 
@@ -7645,9 +8708,9 @@ function renderBusinessIndexTable(rows) {
         <tr>
           <td class="business-name-cell">${escapeHtml(row.business)}</td>
           <td><span class="${groupClass}">${escapeHtml(row.group)}</span></td>
+          <td class="num li-cell">${escapeHtml(formatPercent(row.li))}</td>
           <td class="num">${escapeHtml(formatPercent(row.oi))}</td>
           <td class="num">${escapeHtml(formatPercent(row.ci))}</td>
-          <td class="num li-cell">${escapeHtml(formatPercent(row.li))}</td>
         </tr>
       `;
     })
@@ -8343,35 +9406,12 @@ function renderDemographicCompareChart(svgId, rows) {
   const bottom = 98;
   const innerWidth = width - left - right;
   const innerHeight = height - top - bottom;
+  const slotWidth = rows.length > 0 ? innerWidth / rows.length : innerWidth;
   const scaleY = (value) => top + innerHeight - ((value - min) / (max - min)) * innerHeight;
-  const scaleX = (index) => left + (rows.length === 1 ? innerWidth / 2 : (index * innerWidth) / (rows.length - 1));
+  const scaleX = (index) => left + slotWidth * (index + 0.5);
 
   svg.setAttribute("viewBox", `0 0 ${width} ${height}`);
   svg.innerHTML = "";
-
-  const defs = createSvgEl("defs");
-  [
-    { id: `${svgId}-blue-arrow`, color: palette.blue },
-    { id: `${svgId}-green-arrow`, color: palette.green }
-  ].forEach((marker) => {
-    const markerEl = createSvgEl("marker", {
-      id: marker.id,
-      viewBox: "0 0 10 10",
-      refX: 8,
-      refY: 5,
-      markerWidth: 7,
-      markerHeight: 7,
-      orient: "auto"
-    });
-    markerEl.appendChild(
-      createSvgEl("path", {
-        d: "M 0 0 L 10 5 L 0 10 z",
-        fill: marker.color
-      })
-    );
-    defs.appendChild(markerEl);
-  });
-  svg.appendChild(defs);
 
   for (let tick = min; tick <= max; tick += 5) {
     const y = scaleY(tick);
@@ -8407,8 +9447,8 @@ function renderDemographicCompareChart(svgId, rows) {
     const yWork2025 = scaleY(row.ci2025);
     const yWork2026 = scaleY(row.ci2026);
 
-    if (index > 0 && index < rows.length) {
-      const separatorX = centerX - ((rows.length === 1 ? innerWidth : innerWidth / (rows.length - 1)) / 2);
+    if (index > 0) {
+      const separatorX = left + slotWidth * index;
       svg.appendChild(
         createSvgEl("line", {
           x1: separatorX,
@@ -8431,8 +9471,7 @@ function renderDemographicCompareChart(svgId, rows) {
         value2025: row.oi2025,
         value2026: row.oi2026,
         color: palette.blue,
-        labelDx: -10,
-        arrowId: `${svgId}-blue-arrow`
+        labelDx: -10
       },
       {
         x: workX,
@@ -8441,10 +9480,21 @@ function renderDemographicCompareChart(svgId, rows) {
         value2025: row.ci2025,
         value2026: row.ci2026,
         color: palette.green,
-        labelDx: 10,
-        arrowId: `${svgId}-green-arrow`
+        labelDx: 10
       }
     ].forEach((series) => {
+      const hasDirection = Math.abs(series.y2026 - series.y2025) > 0.8;
+      const direction = hasDirection ? Math.sign(series.y2026 - series.y2025) : 0;
+      const arrowGap = 11;
+      const arrowTipY = hasDirection
+        ? series.y2026 - direction * arrowGap
+        : series.y2026;
+      const arrowHeadLength = 5;
+      const arrowHeadHalf = 3.5;
+      const arrowShaftEndY = hasDirection
+        ? arrowTipY - direction * arrowHeadLength
+        : arrowTipY;
+
       svg.appendChild(
         createSvgEl("line", {
           x1: series.x,
@@ -8454,10 +9504,36 @@ function renderDemographicCompareChart(svgId, rows) {
           stroke: series.color,
           "stroke-opacity": "0.28",
           "stroke-width": 6,
-          "stroke-linecap": "round",
-          "marker-end": `url(#${series.arrowId})`
+          "stroke-linecap": "round"
         })
       );
+
+      if (hasDirection) {
+        svg.appendChild(
+          createSvgEl("line", {
+            x1: series.x,
+            y1: series.y2025,
+            x2: series.x,
+            y2: arrowShaftEndY,
+            stroke: series.color,
+            "stroke-opacity": "0.96",
+            "stroke-width": 2.4,
+            "stroke-linecap": "round"
+          })
+        );
+
+        const arrowBaseY = arrowTipY - direction * arrowHeadLength;
+        svg.appendChild(
+          createSvgEl("path", {
+            d: `M ${series.x - arrowHeadHalf} ${arrowBaseY} L ${series.x} ${arrowTipY} L ${series.x + arrowHeadHalf} ${arrowBaseY}`,
+            fill: "none",
+            stroke: series.color,
+            "stroke-width": 2.4,
+            "stroke-linecap": "round",
+            "stroke-linejoin": "round"
+          })
+        );
+      }
 
       svg.appendChild(
         createSvgEl("circle", {
@@ -8527,6 +9603,126 @@ function renderDemographicCompareChart(svgId, rows) {
   });
 }
 
+function renderDemographicSingleYearChart(svgId, rows) {
+  const svg = document.getElementById(svgId);
+  if (!svg) return;
+
+  const values = rows.flatMap((row) => [row.li, row.oi, row.ci]);
+  const min = Math.max(50, Math.floor(Math.min(...values) / 5) * 5 - 5);
+  const max = Math.min(95, Math.ceil(Math.max(...values) / 5) * 5 + 5);
+  const width = Math.max(640, 220 + rows.length * 240);
+  const height = 360;
+  const left = 54;
+  const right = 24;
+  const top = 24;
+  const bottom = 82;
+  const innerWidth = width - left - right;
+  const innerHeight = height - top - bottom;
+  const baseY = top + innerHeight;
+  const slotWidth = rows.length > 0 ? innerWidth / rows.length : innerWidth;
+  const scaleY = (value) => top + innerHeight - ((value - min) / (max - min)) * innerHeight;
+  const scaleX = (index) => left + slotWidth * (index + 0.5);
+
+  svg.setAttribute("viewBox", `0 0 ${width} ${height}`);
+  svg.innerHTML = "";
+
+  for (let tick = min; tick <= max; tick += 5) {
+    const y = scaleY(tick);
+    svg.appendChild(
+      createSvgEl("line", {
+        x1: left,
+        y1: y,
+        x2: width - right,
+        y2: y,
+        stroke: tick === min ? palette.gray2 : palette.gray,
+        "stroke-width": tick === min ? 1.2 : 1,
+        "stroke-dasharray": tick === min ? "0" : "4 5"
+      })
+    );
+
+    const tickLabel = createSvgEl("text", {
+      x: left - 10,
+      y: y + 4,
+      fill: palette.grayText,
+      "font-size": "11",
+      "text-anchor": "end"
+    });
+    tickLabel.textContent = `${tick}`;
+    svg.appendChild(tickLabel);
+  }
+
+  rows.forEach((row, index) => {
+    const centerX = scaleX(index);
+    const series = [
+      { key: "li", value: row.li, color: palette.orange, x: centerX - 28 },
+      { key: "oi", value: row.oi, color: palette.blue, x: centerX },
+      { key: "ci", value: row.ci, color: palette.green, x: centerX + 28 }
+    ];
+
+    series.forEach((item, itemIndex) => {
+      const y = scaleY(item.value);
+
+      svg.appendChild(
+        createSvgEl("line", {
+          x1: item.x,
+          y1: baseY,
+          x2: item.x,
+          y2: y,
+          stroke: item.color,
+          "stroke-opacity": "0.22",
+          "stroke-width": 6,
+          "stroke-linecap": "round"
+        })
+      );
+
+      svg.appendChild(
+        createSvgEl("circle", {
+          cx: item.x,
+          cy: y,
+          r: 7,
+          fill: palette.white,
+          stroke: item.color,
+          "stroke-width": 3
+        })
+      );
+
+      const valueLabel = createSvgEl("text", {
+        x: item.x,
+        y: y - (itemIndex === 1 ? 14 : 11),
+        fill: item.color,
+        "font-size": "12",
+        "font-weight": "900",
+        "text-anchor": "middle",
+        stroke: palette.white,
+        "stroke-width": "3",
+        "paint-order": "stroke fill"
+      });
+      valueLabel.textContent = item.value.toFixed(1);
+      svg.appendChild(valueLabel);
+    });
+
+    const label = createSvgEl("text", {
+      x: centerX,
+      y: height - 34,
+      fill: palette.black,
+      "font-size": "12",
+      "font-weight": "800",
+      "text-anchor": "middle"
+    });
+
+    splitCompareLabel(row.displayLabel).forEach((line, lineIndex) => {
+      const tspan = createSvgEl("tspan", {
+        x: centerX,
+        dy: lineIndex === 0 ? 0 : 12
+      });
+      tspan.textContent = line;
+      label.appendChild(tspan);
+    });
+
+    svg.appendChild(label);
+  });
+}
+
 function renderDemographicTable(targetId, rows) {
   const tbody = document.getElementById(targetId);
   if (!tbody) return;
@@ -8562,6 +9758,26 @@ function renderDemographicTable(targetId, rows) {
   setupSortableTable(tableIdMap[targetId]);
 }
 
+function renderDemographicSingleYearTable(targetId, rows) {
+  const tbody = document.getElementById(targetId);
+  if (!tbody) return;
+
+  tbody.innerHTML = rows
+    .map(
+      (row) => `
+        <tr>
+          <td class="business-name-cell">${escapeHtml(row.displayLabel)}</td>
+          <td class="num">${escapeHtml(formatPercent(row.li))}</td>
+          <td class="num">${escapeHtml(formatPercent(row.oi))}</td>
+          <td class="num">${escapeHtml(formatPercent(row.ci))}</td>
+        </tr>
+      `
+    )
+    .join("");
+
+  setupSortableTable("nationalityCompareTable");
+}
+
 function renderDemographicSection() {
   renderDemographicMatrix();
   renderDemographicInsights();
@@ -8570,6 +9786,9 @@ function renderDemographicSection() {
     renderDemographicCompareChart(section.chartId, section.rows);
     renderDemographicTable(section.tableBodyId, section.rows);
   });
+
+  renderDemographicSingleYearChart("nationalityCompareChart", nationalityCompareRows);
+  renderDemographicSingleYearTable("nationalityCompareTableBody", nationalityCompareRows);
 }
 
 function keepSubmenuItemVisible(item) {
@@ -8605,11 +9824,80 @@ function getCurrentActivePageId() {
   return document.querySelector(".dashboard-page.active")?.id || "p1";
 }
 
+let currentLoginScope = "all";
+
+const loginScopedBarrierSectionMap = {
+  "biz-merchant": "conclusion-barrier-merchant",
+  "biz-obu": "conclusion-barrier-obu",
+  "biz-special": "conclusion-barrier-special",
+  "biz-manufacturing": "conclusion-barrier-manufacturing",
+  "biz-ax": "conclusion-barrier-ax",
+  "biz-strategy": "conclusion-barrier-strategy",
+  "biz-support": "conclusion-barrier-support"
+};
+
+function isLoginScopeVisible(element) {
+  return Boolean(element) && !element.hidden && !element.classList.contains("login-scope-hidden");
+}
+
+function setLoginScopeVisibility(element, visible) {
+  if (!element) return;
+  element.hidden = !visible;
+  element.classList.toggle("login-scope-hidden", !visible);
+}
+
+function getFirstVisibleSubmenu(pageId) {
+  return [...document.querySelectorAll(`.sidebar-panel[data-page="${pageId}"] .submenu-item`)].find((item) => isLoginScopeVisible(item)) || null;
+}
+
+function applyLoginScopedVisibility(scope = "all") {
+  currentLoginScope = scope;
+  const restricted = scope !== "all";
+  const allowedBusinessSectionId = restricted ? scope : null;
+  const allowedBarrierSectionId = restricted ? loginScopedBarrierSectionMap[scope] || null : null;
+
+  businessDetailSectionIds.forEach((sectionId) => {
+    const visible = !restricted || sectionId === allowedBusinessSectionId;
+    setLoginScopeVisibility(document.getElementById(sectionId), visible);
+    setLoginScopeVisibility(document.querySelector(`.sidebar-panel[data-page="p2"] .submenu-item[data-target="${sectionId}"]`), visible);
+  });
+
+  const barrierChildTargets = Object.values(loginScopedBarrierSectionMap);
+  barrierChildTargets.forEach((sectionId) => {
+    const visible = !restricted || sectionId === allowedBarrierSectionId;
+    setLoginScopeVisibility(document.getElementById(sectionId), visible);
+    setLoginScopeVisibility(document.querySelector(`.sidebar-panel[data-page="p3"] .submenu-item[data-target="${sectionId}"]`), visible);
+  });
+
+  const englishBarrierVisible = !restricted;
+  setLoginScopeVisibility(document.getElementById("conclusion-barrier-english"), englishBarrierVisible);
+  setLoginScopeVisibility(
+    document.querySelector('.sidebar-panel[data-page="p3"] .submenu-item[data-target="conclusion-barrier-english"]'),
+    englishBarrierVisible
+  );
+
+  const barrierGroupLabel = document.querySelector('.sidebar-panel[data-page="p3"] .submenu-group-label');
+  const barrierNested = document.querySelector('.sidebar-panel[data-page="p3"] .submenu-nested');
+  const visibleBarrierChildren = [...document.querySelectorAll('.sidebar-panel[data-page="p3"] .submenu-item.submenu-item-child')].some((item) => isLoginScopeVisible(item));
+  setLoginScopeVisibility(barrierGroupLabel, visibleBarrierChildren);
+  setLoginScopeVisibility(barrierNested, visibleBarrierChildren);
+
+  ["p2", "p3"].forEach((pageId) => {
+    const activeMenu = document.querySelector(`.sidebar-panel[data-page="${pageId}"] .submenu-item.active`);
+    if (!isLoginScopeVisible(activeMenu)) {
+      const firstVisibleMenu = getFirstVisibleSubmenu(pageId);
+      if (firstVisibleMenu) {
+        setActiveSubmenu(firstVisibleMenu, { keepVisible: false });
+      }
+    }
+  });
+}
+
 function updateActiveSubmenuFromScroll(pageId = getCurrentActivePageId()) {
   const page = document.getElementById(pageId);
   if (!page || !page.classList.contains("active")) return;
 
-  const sections = [...page.querySelectorAll(".report-section")];
+  const sections = [...page.querySelectorAll(".report-section")].filter((section) => isLoginScopeVisible(section));
   if (!sections.length) return;
 
   const contentRect = contentEl.getBoundingClientRect();
@@ -8652,7 +9940,7 @@ function showPage(id, el, resetScroll = true) {
     panel.classList.toggle("active", panel.dataset.page === id);
   });
 
-  const firstMenu = document.querySelector(`.sidebar-panel[data-page="${id}"] .submenu-item`);
+  const firstMenu = getFirstVisibleSubmenu(id);
   if (firstMenu) {
     setActiveSubmenu(firstMenu, { keepVisible: false });
   }
@@ -8682,6 +9970,135 @@ function activateSection(pageId, sectionId, el) {
   });
 }
 
+const loginAccessMap = {
+  all: { password: "2026oci", pageId: "p1", sectionId: "summary-business-index" }
+};
+
+function unlockLoginGate() {
+  const gate = document.getElementById("loginGate");
+  if (gate) {
+    gate.hidden = true;
+    gate.setAttribute("aria-hidden", "true");
+  }
+  document.body.classList.remove("auth-locked");
+}
+
+function openLoginTarget(scope) {
+  const config = loginAccessMap[scope] || loginAccessMap.all;
+  applyLoginScopedVisibility(scope);
+  unlockLoginGate();
+
+  if (config.pageId === "p1") {
+    const tab = document.querySelector('.nav-tab[data-page="p1"]');
+    if (tab) {
+      showPage("p1", tab, false);
+    }
+    const target = document.getElementById(config.sectionId);
+    if (target) {
+      requestAnimationFrame(() => {
+        target.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    }
+    return;
+  }
+
+  const targetMenu = document.querySelector(
+    `.sidebar-panel[data-page="${config.pageId}"] .submenu-item[data-target="${config.sectionId}"]`
+  );
+
+  if (targetMenu) {
+    activateSection(config.pageId, config.sectionId, targetMenu);
+    return;
+  }
+
+  const tab = document.querySelector(`.nav-tab[data-page="${config.pageId}"]`);
+  if (tab) {
+    showPage(config.pageId, tab, false);
+  }
+}
+
+const loginEyeOpenSvg = `
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M2 12s3.6-6 10-6 10 6 10 6-3.6 6-10 6S2 12 2 12Z"></path>
+    <circle cx="12" cy="12" r="3.2"></circle>
+  </svg>
+`;
+
+const loginEyeClosedSvg = `
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M3 3l18 18"></path>
+    <path d="M10.6 10.7A3 3 0 0 0 9 13a3 3 0 0 0 5.1 2.1"></path>
+    <path d="M9.9 5.1A10.4 10.4 0 0 1 12 5c6.4 0 10 7 10 7a18.2 18.2 0 0 1-3.1 4.1"></path>
+    <path d="M6.6 6.7C3.9 8.5 2 12 2 12a18 18 0 0 0 5.2 5.4"></path>
+  </svg>
+`;
+
+function bindLoginPasswordToggle(inputEl, toggleEl) {
+  if (!inputEl || !toggleEl) return;
+
+  const render = () => {
+    const visible = inputEl.type === "text";
+    toggleEl.innerHTML = visible ? loginEyeClosedSvg : loginEyeOpenSvg;
+    toggleEl.setAttribute("aria-label", visible ? "비밀번호 숨기기" : "비밀번호 보기");
+    toggleEl.setAttribute("aria-pressed", visible ? "true" : "false");
+  };
+
+  toggleEl.addEventListener("click", () => {
+    inputEl.type = inputEl.type === "password" ? "text" : "password";
+    render();
+    inputEl.focus({ preventScroll: true });
+  });
+
+  render();
+}
+
+function initializeLoginGate() {
+  const submitEl = document.getElementById("loginAllAccessButton");
+  const passwordPanelEl = document.getElementById("loginPasswordPanel");
+  const passwordEl = document.getElementById("loginPassword");
+  const passwordToggleEl = document.getElementById("loginPasswordToggle");
+  const confirmEl = document.getElementById("loginConfirmButton");
+  const errorEl = document.getElementById("loginError");
+  if (!submitEl || !passwordPanelEl || !passwordEl || !passwordToggleEl || !confirmEl || !errorEl) return;
+
+  bindLoginPasswordToggle(passwordEl, passwordToggleEl);
+
+  const clearError = () => {
+    errorEl.textContent = "";
+  };
+
+  const attemptLogin = () => {
+    const config = loginAccessMap.all;
+    const password = String(passwordEl.value || "").trim();
+
+    if (password !== config.password) {
+      errorEl.textContent = "비밀번호가 일치하지 않습니다.";
+      passwordEl.focus();
+      passwordEl.select();
+      return;
+    }
+
+    clearError();
+    openLoginTarget("all");
+  };
+
+  submitEl.addEventListener("click", () => {
+    clearError();
+    passwordPanelEl.hidden = false;
+    requestAnimationFrame(() => {
+      passwordEl.focus();
+    });
+  });
+  confirmEl.addEventListener("click", attemptLogin);
+  passwordEl.addEventListener("input", clearError);
+  passwordEl.addEventListener("keydown", (event) => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      attemptLogin();
+    }
+  });
+}
+
 contentEl.addEventListener("scroll", () => {
   scheduleActiveSubmenuFromScroll();
 }, { passive: true });
@@ -8699,6 +10116,8 @@ renderConclusionInsightSection();
 renderEngagementBarrierSection();
 renderBusinessBarrierSections();
 decoratePlainTableHeaders();
+applyLoginScopedVisibility("all");
+initializeLoginGate();
 </script>
 </body>
 </html>
