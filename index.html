@@ -97,16 +97,32 @@
 
   .login-brand {
     display: flex;
-    align-items: center;
-    gap: 14px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
     margin-bottom: 22px;
   }
 
+  .login-brand-wordmark {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+  }
+
   .login-brand-mark {
-    width: 66px;
-    height: 50px;
+    width: 78px;
+    height: 60px;
     object-fit: contain;
     filter: drop-shadow(0 10px 18px rgba(var(--orange-rgb), 0.16));
+  }
+
+  .login-brand-name {
+    font-size: clamp(34px, 4.4vw, 56px);
+    line-height: 1;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    color: #151515;
+    white-space: nowrap;
   }
 
   .login-kicker {
@@ -290,21 +306,21 @@
   .brand {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 14px;
     flex-shrink: 0;
   }
 
   .brand-mark {
-    width: 52px;
-    height: 40px;
+    width: 58px;
+    height: 44px;
     object-fit: contain;
     filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.12));
   }
 
   .brand-name {
-    font-size: 18px;
+    font-size: 19px;
     font-weight: 800;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.08em;
     color: #FFFFFF;
     white-space: nowrap;
   }
@@ -2665,6 +2681,7 @@
     text-align: center;
   }
 
+
   .business-index-table.has-header-groups thead .group-header-row th {
     top: 0;
     z-index: 26;
@@ -2716,6 +2733,41 @@
   .business-index-table.has-header-groups thead .sub-header-row th {
     top: 38px;
     z-index: 25;
+  }
+
+  .business-index-table td.metric-highlight-safety {
+    color: var(--orange);
+    font-weight: 900;
+  }
+
+  .business-index-table td.metric-highlight-operation {
+    color: var(--blue);
+    font-weight: 900;
+  }
+
+  .business-index-table td.metric-highlight-tech {
+    color: var(--green);
+    font-weight: 900;
+  }
+
+  .business-index-table td.metric-highlight-org-index {
+    color: var(--navy);
+    font-weight: 900;
+  }
+
+  .business-index-table td.metric-highlight-work-index {
+    color: var(--green);
+    font-weight: 900;
+  }
+
+  .business-index-table td.metric-highlight-li {
+    color: var(--green);
+    font-weight: 900;
+  }
+
+  .business-index-table td.metric-highlight-ci {
+    color: var(--purple);
+    font-weight: 900;
   }
 
   .all-business-aggregate-row {
@@ -3786,9 +3838,9 @@
 
   .demographic-chart-grid {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 14px;
-    margin-top: 14px;
+    grid-template-columns: 1fr;
+    gap: 18px;
+    margin-top: 18px;
   }
 
   .demographic-single-panel {
@@ -4477,18 +4529,110 @@
       justify-content: flex-start;
     }
   }
+
+  /* Readability bump */
+  body {
+    font-size: 17px;
+  }
+
+  .nav-tab {
+    font-size: 15px;
+  }
+
+  .sidebar-label {
+    font-size: 12px;
+  }
+
+  .submenu-item .menu-title {
+    font-size: 15px;
+  }
+
+  .submenu-item.submenu-item-child .menu-title {
+    font-size: 14px;
+  }
+
+  .section-title {
+    font-size: 26px;
+  }
+
+  .chart-panel-title,
+  .business-index-table-title {
+    font-size: 18px;
+  }
+
+  .chart-panel-sub,
+  .business-index-table-sub {
+    font-size: 14px;
+  }
+
+  .legend-item {
+    font-size: 13px;
+  }
+
+  .division-chip {
+    font-size: 12px;
+    padding: 8px 18px;
+  }
+
+  .header-key-chip {
+    min-width: 26px;
+    height: 26px;
+    font-size: 10px;
+  }
+
+  .business-index-table th,
+  .business-index-table td,
+  .pattern-table th,
+  .pattern-table td {
+    font-size: 14px !important;
+  }
+
+  .business-index-table th,
+  .pattern-table th {
+    font-size: 13px !important;
+  }
+
+  .type-count-wrap .business-index-table th,
+  .type-count-wrap .business-index-table td {
+    font-size: 13px !important;
+  }
+
+  .business-index-line-svg text,
+  .business-detail-line-svg text,
+  .demographic-compare-svg text,
+  .insight-radar-svg text,
+  .type-shift-svg text {
+    font-size: 13px !important;
+  }
+
+  .login-card,
+  .login-select,
+  .login-password,
+  .login-button,
+  .login-access-button,
+  .login-label {
+    font-size: 16px;
+  }
+
+  .login-helper,
+  .login-desc {
+    font-size: 15px;
+  }
 </style>
 </head>
 <body class="auth-locked">
 <div id="loginGate" class="login-gate" aria-hidden="false">
   <div class="login-card">
     <div class="login-brand">
-      <img class="login-brand-mark" src="assets/hanwha-ocean-symbol.svg" alt="HANWHA OCEAN logo">
+      <div class="login-brand-wordmark">
+        <img class="login-brand-mark" src="assets/hanwha-ocean-symbol.svg" alt="Hanwha Ocean logo mark">
+        <div class="login-brand-name">Hanwha Ocean</div>
+      </div>
       <div>
         <div class="login-kicker">Hanwha Ocean Report Access</div>
         <h1 class="login-title">
           2026 한화
-          <span class="login-title-accent">culture survay report</span>
+          <span class="login-title-accent">culture survey report</span>
         </h1>
       </div>
     </div>
@@ -4517,8 +4661,8 @@
 </div>
 <nav class="top-nav">
   <div class="brand">
-    <img class="brand-mark" src="assets/hanwha-ocean-symbol.svg" alt="HANWHA OCEAN logo">
-    <div class="brand-name">HANWHA OCEAN</div>
+    <img class="brand-mark" src="assets/hanwha-ocean-symbol.svg" alt="Hanwha Ocean logo mark">
+    <div class="brand-name">Hanwha Ocean</div>
   </div>
   <div class="brand-badges">
     <span class="badge">2026서베이</span>
@@ -4690,7 +4834,7 @@
                     <tr>
                       <th>사업부</th>
                       <th>직군</th>
-                      <th class="num">몰입지수</th>
+                      <th class="num">몰입지수 (조직+업무)</th>
                       <th class="num">조직몰입</th>
                       <th class="num">업무몰입</th>
                     </tr>
@@ -4699,7 +4843,6 @@
                 </table>
               </div>
             </div>
-            <div class="footer-note">현재 그래프는 헤더가 포함된 `01_사업부별몰입지수_2026.csv`를 기준으로 다시 연결했습니다. 상단은 `몰입지수 / 조직몰입 / 업무몰입`, 하단은 `OI / LI / CI` 헤더를 각각 사용합니다.</div>
           </div>
         </div>
       </section>
@@ -5580,7 +5723,7 @@ const allBusinessCsv = `직군,구분,응답자수,응답률,몰입지수,조직
 
 const allBusinessColumnGroups = {
   summary: ["직군", "구분", "응답자수", "응답률", "몰입지수", "조직몰입", "업무몰입", "OI", "safety", "operation", "tech", "LI", "CI"],
-  detail: ["직군", "구분", "회사자랑", "존중", "입사추천", "개인희생", "조직공감력", "직무유연성", "업무활력", "역할인지", "성장노력", "성장경험", "성과인정", "잠재력발휘"],
+  detail: ["직군", "구분", "조직몰입", "회사자랑", "존중", "입사추천", "개인희생", "조직공감력", "직무유연성", "업무몰입", "업무활력", "역할인지", "성장노력", "성장경험", "성과인정", "잠재력발휘"],
   oi: ["직군", "구분", "OI", "safety", "safety01", "safety02", "safety03", "operation", "operation01", "operation02", "operation03", "operation04", "operation05", "tech", "tech01", "tech02", "tech03"],
   li: ["직군", "구분", "LI", "LI1", "LI2", "LI3", "LI4", "LI5"],
   ci: ["직군", "구분", "CI", "CI1", "CI2", "CI3", "CI4", "CI5"]
@@ -5599,7 +5742,7 @@ const businessDetailSectionIds = [
 ];
 const businessDetailColumnGroups = {
   summary: ["division_name", "구분", "팀", "응답인원", "응답률", "몰입지수", "조직몰입", "업무몰입", "OI", "safety", "operation", "tech", "LI", "CI"],
-  detail: ["division_name", "구분", "팀", "회사자랑", "존중", "입사추천", "개인희생", "조직공감력", "직무유연성", "업무활력", "역할인지", "성장노력", "성장경험", "성과인정", "잠재력발휘"],
+  detail: ["division_name", "구분", "팀", "조직몰입", "회사자랑", "존중", "입사추천", "개인희생", "조직공감력", "직무유연성", "업무몰입", "업무활력", "역할인지", "성장노력", "성장경험", "성과인정", "잠재력발휘"],
   oi: ["division_name", "구분", "팀", "OI", "safety", "safety01", "safety02", "safety03", "operation", "operation01", "operation02", "operation03", "operation04", "operation05", "tech", "tech01", "tech02", "tech03"],
   li: ["division_name", "구분", "팀", "LI", "LI1", "LI2", "LI3", "LI4", "LI5"],
   ci: ["division_name", "구분", "팀", "CI", "CI1", "CI2", "CI3", "CI4", "CI5"]
@@ -5607,7 +5750,7 @@ const businessDetailColumnGroups = {
 const businessDetailColumnGroupOverrides = {
   "biz-production": {
     summary: ["division_name", "구분", "팀", "응답인원", "응답률", "몰입지수", "조직몰입", "업무몰입", "OI", "LI", "CI"],
-    detail: ["division_name", "구분", "팀", "회사자랑", "존중", "입사추천", "희생", "조직공감력", "직무유연성", "활력", "아침출근", "업무를통한성장", "나에대한기대", "성과인정기대", "WAY실천노력"],
+    detail: ["division_name", "구분", "팀", "조직몰입", "회사자랑", "존중", "입사추천", "희생", "조직공감력", "직무유연성", "업무몰입", "활력", "아침출근", "업무를통한성장", "나에대한기대", "성과인정기대", "WAY실천노력"],
     oi: ["division_name", "구분", "팀", "OI"],
     li: ["division_name", "구분", "팀", "LI", "LI1", "LI2", "LI3", "LI4", "LI5"],
     ci: ["division_name", "구분", "팀", "CI", "CI1", "CI2", "CI3", "CI4", "CI5"]
@@ -6766,6 +6909,7 @@ function renderAllBusinessTable(tableId, columns, rows, options = {}) {
   const treeContext = options.treeContext || null;
   const disableSort = Boolean(options.disableSort);
   const headerGroups = options.headerGroups || null;
+  const highlightMetricColumns = options.highlightMetricColumns || null;
   const leadingSpan = (headerGroups?.leadingColumnCount || 0) + (treeContext ? 1 : 0);
   const effectiveColumnCount = columns.length + (treeContext ? 1 : 0);
   const colgroup = buildBusinessTableColgroup(columns, {
@@ -6774,13 +6918,13 @@ function renderAllBusinessTable(tableId, columns, rows, options = {}) {
   });
 
   if (colgroup.totalWidth) {
-    table.style.width = `${colgroup.totalWidth}px`;
+    table.style.width = "100%";
     table.style.minWidth = `${colgroup.totalWidth}px`;
   } else if (headerGroups) {
-    table.style.width = "";
+    table.style.width = "100%";
     table.style.minWidth = `${Math.max(effectiveColumnCount * 118, 1880)}px`;
   } else {
-    table.style.width = "";
+    table.style.width = "100%";
     table.style.minWidth = "";
   }
 
@@ -6831,6 +6975,9 @@ function renderAllBusinessTable(tableId, columns, rows, options = {}) {
                     classNames.push("business-name-cell");
                   } else if (column !== "직군") {
                     classNames.push("num");
+                  }
+                  if (highlightMetricColumns?.[column]) {
+                    classNames.push(highlightMetricColumns[column]);
                   }
                   if (column === "팀") {
                     classNames.push("team-name-cell");
@@ -6924,17 +7071,41 @@ function renderAllBusinessSection() {
     columnWidths: buildBusinessTableColumnWidths(allBusinessColumnGroups.summary, "summary", false)
   });
   renderAllBusinessTable("allBusinessDetailTable", allBusinessColumnGroups.detail, allBusinessRows, {
-    columnWidths: buildBusinessTableColumnWidths(allBusinessColumnGroups.detail, "detail", false)
+    columnWidths: buildBusinessTableColumnWidths(allBusinessColumnGroups.detail, "detail", false),
+    headerGroups: {
+      leadingColumnCount: 2,
+      groups: [
+        { label: "조직몰입", colspan: 7, className: "group-org" },
+        { label: "업무몰입", colspan: 7, className: "group-work" }
+      ]
+    },
+    highlightMetricColumns: {
+      조직몰입: "metric-highlight-org-index",
+      업무몰입: "metric-highlight-work-index"
+    }
   });
   renderAllBusinessTable("allBusinessOITable", allBusinessColumnGroups.oi, allBusinessRows, {
     columnWidths: buildBusinessTableColumnWidths(allBusinessColumnGroups.oi, "oi", false),
-    headerGroups: buildOIHeaderGroups(allBusinessColumnGroups.oi, 3)
+    headerGroups: buildOIHeaderGroups(allBusinessColumnGroups.oi, 3),
+    highlightMetricColumns: {
+      safety: "metric-highlight-safety",
+      operation: "metric-highlight-operation",
+      tech: "metric-highlight-tech"
+    }
   });
   renderAllBusinessTable("allBusinessLITable", allBusinessColumnGroups.li, allBusinessRows, {
-    columnWidths: buildBusinessTableColumnWidths(allBusinessColumnGroups.li, "li", false)
+    columnWidths: buildBusinessTableColumnWidths(allBusinessColumnGroups.li, "li", false),
+    highlightMetricColumns: {
+      LI: "metric-highlight-li",
+      li: "metric-highlight-li"
+    }
   });
   renderAllBusinessTable("allBusinessCITable", allBusinessColumnGroups.ci, allBusinessRows, {
-    columnWidths: buildBusinessTableColumnWidths(allBusinessColumnGroups.ci, "ci", false)
+    columnWidths: buildBusinessTableColumnWidths(allBusinessColumnGroups.ci, "ci", false),
+    highlightMetricColumns: {
+      CI: "metric-highlight-ci",
+      ci: "metric-highlight-ci"
+    }
   });
   renderAllBusinessInsight(allBusinessRows);
 }
@@ -6962,6 +7133,11 @@ function getBusinessDetailDepartments(rows) {
 }
 
 function getBusinessDetailRowLabel(sectionId, row) {
+  if (isBusinessDetailTotalRow(row)) {
+    const sectionLabel = getBusinessDetailSectionLabel(sectionId, [row]);
+    return sectionLabel ? `${sectionLabel} 전체` : "전체";
+  }
+
   const departmentLabel = normalizeBusinessLabel(row["구분"]);
   const teamLabel = normalizeBusinessLabel(row["팀"]);
   if (!teamLabel || teamLabel === "(전체)" || teamLabel === departmentLabel) {
@@ -7029,12 +7205,33 @@ function getBusinessDetailTeamValue(row) {
   ].join("|||");
 }
 
+function getBusinessDetailTotalValue(sectionId) {
+  return [
+    "total",
+    String(sectionId || "").trim(),
+    "",
+    ""
+  ].join("|||");
+}
+
+function getBusinessDetailSectionLabel(sectionId, rows = []) {
+  const totalRow = Array.isArray(rows) ? rows.find((row) => isBusinessDetailTotalRow(row)) : null;
+  return businessDetailSectionDisplayNameMap[sectionId]
+    || normalizeBusinessLabel(totalRow?.["division_name"])
+    || "";
+}
+
 function parseBusinessDetailOptionValue(value) {
   const [mode = "", division = "", department = "", team = ""] = String(value || "").split("|||");
   return { mode, division, department, team };
 }
 
 function getBusinessDetailOptionLabel(sectionId, row) {
+  if (isBusinessDetailTotalRow(row)) {
+    const sectionLabel = getBusinessDetailSectionLabel(sectionId, [row]);
+    return sectionLabel ? `${sectionLabel} 전체` : "전체";
+  }
+
   const departmentLabel = normalizeBusinessLabel(row["구분"]);
   const teamLabel = normalizeBusinessLabel(row["팀"]);
 
@@ -7046,8 +7243,23 @@ function getBusinessDetailOptionLabel(sectionId, row) {
 }
 
 function getBusinessDetailFilterOptions(rows, sectionId) {
+  const sectionLabel = getBusinessDetailSectionLabel(sectionId, rows);
   const departmentSeen = new Set();
   const teamSeen = new Set();
+  const totalOptions = sectionLabel
+    ? [
+        {
+          mode: "total",
+          value: getBusinessDetailTotalValue(sectionId),
+          label: `${sectionLabel} 전체`,
+          divisionLabel: sectionLabel,
+          departmentLabel: "(전체)",
+          teamLabel: "",
+          subLabel: "사업부 전체",
+          searchText: `${sectionLabel} 전체 ${sectionLabel}`.toLowerCase()
+        }
+      ]
+    : [];
   const departmentOptions = [];
   const teamOptions = [];
 
@@ -7090,11 +7302,12 @@ function getBusinessDetailFilterOptions(rows, sectionId) {
         departmentLabel,
         teamLabel,
         subLabel: [divisionLabel, departmentLabel, "팀"].filter(Boolean).join(" / "),
-        searchText: `${divisionLabel} ${departmentLabel} ${teamLabel} 팀 ${row["division_name"] || ""} ${row["구분"] || ""} ${row["팀"] || ""}`.toLowerCase()
+        searchText: `${divisionLabel} ${departmentLabel} ${teamLabel} 팀 ${row["division_name"] || ""} ${row["구분"] || ""} ${row["팀"] || ""}`.toLowerCase(),
+        teamSearchText: `${teamLabel} ${row["팀"] || ""}`.toLowerCase()
       });
     });
 
-  return [...departmentOptions, ...teamOptions];
+  return [...totalOptions, ...departmentOptions, ...teamOptions];
 }
 
 function getBusinessDetailOptionMeta(sectionId, value) {
@@ -7108,13 +7321,36 @@ function getBusinessDetailSearchResults(sectionId, keyword) {
   if (!state) return [];
 
   const normalized = String(keyword || "").trim().toLowerCase();
+  const totalOption = state.options.find((option) => option.mode === "total");
+  const departmentOptions = state.options.filter((option) => option.mode === "department");
+  const teamOptions = state.options.filter((option) => option.mode === "team");
   if (!normalized) {
-    return state.options.filter((option) => option.mode === "department").slice(0, 12);
+    return [...(totalOption ? [totalOption] : []), ...departmentOptions].slice(0, 12);
   }
 
-  return state.options
-    .filter((option) => option.searchText.includes(normalized))
-    .slice(0, 24);
+  const matchedDepartments = departmentOptions.filter((option) => option.searchText.includes(normalized));
+  const matchedTeams = teamOptions.filter((option) => (option.teamSearchText || option.searchText).includes(normalized));
+  const teamParentValues = new Set(
+    matchedTeams.map((option) => {
+      const parsed = parseBusinessDetailOptionValue(option.value);
+      return ["department", parsed.division, parsed.department].join("|||");
+    })
+  );
+  const teamParentDepartments = departmentOptions.filter((option) => teamParentValues.has(option.value));
+  const mergedDepartments = [
+    ...matchedDepartments,
+    ...teamParentDepartments.filter((option) => !matchedDepartments.some((matched) => matched.value === option.value))
+  ];
+  const includeTotal = Boolean(
+    totalOption
+      && (
+        totalOption.searchText.includes(normalized)
+        || mergedDepartments.length
+        || matchedTeams.length
+      )
+  );
+
+  return [...(includeTotal ? [totalOption] : []), ...mergedDepartments, ...matchedTeams].slice(0, 24);
 }
 
 function getBusinessDetailScopedRows(sectionId) {
@@ -7123,6 +7359,8 @@ function getBusinessDetailScopedRows(sectionId) {
   if (!state.selectedDepartment) return state.rows;
 
   const selected = parseBusinessDetailOptionValue(state.selectedDepartment);
+  if (selected.mode === "total") return state.rows;
+
   return state.rows.filter((row) => {
     if (row["구분"] === "(전체)") return true;
     if (!hasBusinessDetailScore(row)) return false;
@@ -7268,7 +7506,11 @@ function renderBusinessDetailChart(sectionId, targetId, rows) {
   const svg = document.getElementById(targetId);
   if (!svg) return;
 
-  const detailRows = rows.filter((row) => row["구분"] !== "(전체)" && hasBusinessDetailScore(row));
+  const chartRows = rows.filter((row) => hasBusinessDetailScore(row));
+  const totalRow = chartRows.find((row) => isBusinessDetailTotalRow(row));
+  const detailRows = totalRow
+    ? [totalRow, ...chartRows.filter((row) => row !== totalRow)]
+    : chartRows;
   if (!detailRows.length) {
     svg.innerHTML = "";
     return;
@@ -7489,9 +7731,13 @@ function updateBusinessDetailTables(sectionId) {
   const countLabel = document.getElementById(`${state.prefix}Count`);
   if (countLabel) {
     const selectedMeta = getBusinessDetailOptionMeta(sectionId, state.selectedDepartment);
-    countLabel.textContent = state.selectedDepartment
-      ? `전체 + ${selectedMeta?.label || normalizeBusinessLabel(state.selectedDepartment)}`
-      : `${detailCount}개 조직`;
+    if (!state.selectedDepartment) {
+      countLabel.textContent = `${detailCount}개 조직`;
+    } else if (selectedMeta?.mode === "total") {
+      countLabel.textContent = selectedMeta.label;
+    } else {
+      countLabel.textContent = `전체 + ${selectedMeta?.label || normalizeBusinessLabel(state.selectedDepartment)}`;
+    }
   }
 
   const tableOptions = {
@@ -7511,23 +7757,40 @@ function updateBusinessDetailTables(sectionId) {
     headerGroups: {
       leadingColumnCount: 3,
       groups: [
-        { label: "조직몰입", colspan: 6, className: "group-org" },
-        { label: "업무몰입", colspan: 6, className: "group-work" }
+        { label: "조직몰입", colspan: 7, className: "group-org" },
+        { label: "업무몰입", colspan: 7, className: "group-work" }
       ]
+    },
+    highlightMetricColumns: {
+      조직몰입: "metric-highlight-org-index",
+      업무몰입: "metric-highlight-work-index"
     }
   });
   renderAllBusinessTable(`${state.prefix}OITable`, columnGroups.oi, rows, {
     ...tableOptions,
     columnWidths: buildBusinessTableColumnWidths(columnGroups.oi, "oi", Boolean(treeContext)),
-    headerGroups: buildOIHeaderGroups(columnGroups.oi, 4)
+    headerGroups: buildOIHeaderGroups(columnGroups.oi, 4),
+    highlightMetricColumns: {
+      safety: "metric-highlight-safety",
+      operation: "metric-highlight-operation",
+      tech: "metric-highlight-tech"
+    }
   });
   renderAllBusinessTable(`${state.prefix}LITable`, columnGroups.li, rows, {
     ...tableOptions,
-    columnWidths: buildBusinessTableColumnWidths(columnGroups.li, "li", Boolean(treeContext))
+    columnWidths: buildBusinessTableColumnWidths(columnGroups.li, "li", Boolean(treeContext)),
+    highlightMetricColumns: {
+      LI: "metric-highlight-li",
+      li: "metric-highlight-li"
+    }
   });
   renderAllBusinessTable(`${state.prefix}CITable`, columnGroups.ci, rows, {
     ...tableOptions,
-    columnWidths: buildBusinessTableColumnWidths(columnGroups.ci, "ci", Boolean(treeContext))
+    columnWidths: buildBusinessTableColumnWidths(columnGroups.ci, "ci", Boolean(treeContext)),
+    highlightMetricColumns: {
+      CI: "metric-highlight-ci",
+      ci: "metric-highlight-ci"
+    }
   });
   renderBusinessDetailChart(sectionId, `${state.prefix}LineChart`, rows);
   renderBusinessDetailHighlights(sectionId, `${state.prefix}Highlights`, rows);
@@ -9399,11 +9662,25 @@ function renderDemographicCompareChart(svgId, rows) {
   const min = Math.max(40, Math.floor(Math.min(...values) / 5) * 5 - 5);
   const max = Math.min(90, Math.ceil(Math.max(...values) / 5) * 5 + 5);
   const width = Math.max(760, 180 + rows.length * 126);
-  const height = 420;
+  const height = 500;
+  const groupedRuns = [];
+
+  rows.forEach((row, index) => {
+    const groupLabel = row.group === "일반직" ? "일반직" : row.group === "생산직" ? "생산직" : "";
+    if (!groupLabel) return;
+    const lastRun = groupedRuns[groupedRuns.length - 1];
+    if (lastRun && lastRun.label === groupLabel) {
+      lastRun.end = index;
+    } else {
+      groupedRuns.push({ label: groupLabel, start: index, end: index });
+    }
+  });
+
+  const hasGroupBands = groupedRuns.length > 0;
   const left = 48;
   const right = 22;
-  const top = 22;
-  const bottom = 98;
+  const top = hasGroupBands ? 44 : 22;
+  const bottom = 108;
   const innerWidth = width - left - right;
   const innerHeight = height - top - bottom;
   const slotWidth = rows.length > 0 ? innerWidth / rows.length : innerWidth;
@@ -9431,12 +9708,76 @@ function renderDemographicCompareChart(svgId, rows) {
       x: left - 10,
       y: y + 4,
       fill: palette.grayText,
-      "font-size": "11",
+      "font-size": "12",
       "text-anchor": "end"
     });
     tickLabel.textContent = `${tick}`;
     svg.appendChild(tickLabel);
   }
+
+  if (groupedRuns.length > 1) {
+    groupedRuns.slice(1).forEach((run) => {
+      const separatorX = left + slotWidth * run.start;
+      svg.appendChild(
+        createSvgEl("line", {
+          x1: separatorX,
+          y1: top - 18,
+          x2: separatorX,
+          y2: height - bottom + 8,
+          stroke: palette.gray2,
+          "stroke-opacity": "0.75",
+          "stroke-width": 1.8,
+          "stroke-dasharray": "8 8"
+        })
+      );
+    });
+  }
+
+  groupedRuns.forEach((run) => {
+    const groupStartX = left + slotWidth * run.start;
+    const groupEndX = left + slotWidth * (run.end + 1);
+    const groupCenterX = (groupStartX + groupEndX) / 2;
+    const isGeneral = run.label === "일반직";
+    const groupColor = isGeneral ? palette.blue : palette.green;
+    const pillWidth = run.label === "생산직" ? 82 : 76;
+
+    svg.appendChild(
+      createSvgEl("rect", {
+        x: groupCenterX - pillWidth / 2,
+        y: 8,
+        width: pillWidth,
+        height: 24,
+        rx: 12,
+        fill: groupColor,
+        "fill-opacity": "0.10",
+        stroke: groupColor,
+        "stroke-opacity": "0.22"
+      })
+    );
+
+    svg.appendChild(
+      createSvgEl("line", {
+        x1: groupStartX + 12,
+        y1: top - 8,
+        x2: groupEndX - 12,
+        y2: top - 8,
+        stroke: groupColor,
+        "stroke-opacity": "0.22",
+        "stroke-width": 1.2
+      })
+    );
+
+    const groupText = createSvgEl("text", {
+      x: groupCenterX,
+      y: 25,
+      fill: groupColor,
+      "font-size": "17",
+      "font-weight": "900",
+      "text-anchor": "middle"
+    });
+    groupText.textContent = run.label;
+    svg.appendChild(groupText);
+  });
 
   rows.forEach((row, index) => {
     const centerX = scaleX(index);
@@ -9471,7 +9812,7 @@ function renderDemographicCompareChart(svgId, rows) {
         value2025: row.oi2025,
         value2026: row.oi2026,
         color: palette.blue,
-        labelDx: -10
+        labelDx: -12
       },
       {
         x: workX,
@@ -9480,7 +9821,7 @@ function renderDemographicCompareChart(svgId, rows) {
         value2025: row.ci2025,
         value2026: row.ci2026,
         color: palette.green,
-        labelDx: 10
+        labelDx: 12
       }
     ].forEach((series) => {
       const hasDirection = Math.abs(series.y2026 - series.y2025) > 0.8;
@@ -9558,24 +9899,33 @@ function renderDemographicCompareChart(svgId, rows) {
       );
 
       const isClose = Math.abs(series.y2025 - series.y2026) < 18;
+      const labelAnchor = series.labelDx < 0 ? "end" : "start";
+      const value2025Y = Math.max(hasGroupBands ? 38 : 16, series.y2025 - (isClose ? 14 : 10));
+      const value2026Y = Math.min(height - bottom - 10, series.y2026 + (isClose ? 22 : 18));
       const value2025 = createSvgEl("text", {
         x: series.x + series.labelDx,
-        y: series.y2025 - (isClose ? 12 : 10),
+        y: value2025Y,
         fill: series.color,
-        "font-size": "12",
+        "font-size": "14",
         "font-weight": "800",
-        "text-anchor": "middle"
+        "text-anchor": labelAnchor,
+        stroke: palette.white,
+        "stroke-width": "5",
+        "paint-order": "stroke fill"
       });
       value2025.textContent = series.value2025.toFixed(1);
       svg.appendChild(value2025);
 
       const value2026 = createSvgEl("text", {
         x: series.x + series.labelDx,
-        y: series.y2026 + (isClose ? 20 : 18),
+        y: value2026Y,
         fill: series.color,
-        "font-size": "12",
+        "font-size": "14",
         "font-weight": "900",
-        "text-anchor": "middle"
+        "text-anchor": labelAnchor,
+        stroke: palette.white,
+        "stroke-width": "5",
+        "paint-order": "stroke fill"
       });
       value2026.textContent = series.value2026.toFixed(1);
       svg.appendChild(value2026);
@@ -9585,12 +9935,13 @@ function renderDemographicCompareChart(svgId, rows) {
       x: centerX,
       y: height - 46,
       fill: palette.black,
-      "font-size": "11",
+      "font-size": "12",
       "font-weight": "800",
       "text-anchor": "middle"
     });
 
-    splitCompareLabel(row.displayLabel).forEach((line, lineIndex) => {
+    const labelLines = row.group ? splitAxisLabel(row.label) : splitCompareLabel(row.displayLabel);
+    labelLines.forEach((line, lineIndex) => {
       const tspan = createSvgEl("tspan", {
         x: centerX,
         dy: lineIndex === 0 ? 0 : 12
@@ -9611,14 +9962,13 @@ function renderDemographicSingleYearChart(svgId, rows) {
   const min = Math.max(50, Math.floor(Math.min(...values) / 5) * 5 - 5);
   const max = Math.min(95, Math.ceil(Math.max(...values) / 5) * 5 + 5);
   const width = Math.max(640, 220 + rows.length * 240);
-  const height = 360;
+  const height = 430;
   const left = 54;
   const right = 24;
   const top = 24;
-  const bottom = 82;
+  const bottom = 94;
   const innerWidth = width - left - right;
   const innerHeight = height - top - bottom;
-  const baseY = top + innerHeight;
   const slotWidth = rows.length > 0 ? innerWidth / rows.length : innerWidth;
   const scaleY = (value) => top + innerHeight - ((value - min) / (max - min)) * innerHeight;
   const scaleX = (index) => left + slotWidth * (index + 0.5);
@@ -9654,47 +10004,35 @@ function renderDemographicSingleYearChart(svgId, rows) {
   rows.forEach((row, index) => {
     const centerX = scaleX(index);
     const series = [
-      { key: "li", value: row.li, color: palette.orange, x: centerX - 28 },
-      { key: "oi", value: row.oi, color: palette.blue, x: centerX },
-      { key: "ci", value: row.ci, color: palette.green, x: centerX + 28 }
+      { key: "li", value: row.li, color: palette.orange, x: centerX - 28, labelDx: -4, labelAnchor: "end" },
+      { key: "oi", value: row.oi, color: palette.blue, x: centerX, labelDx: 0, labelAnchor: "middle" },
+      { key: "ci", value: row.ci, color: palette.green, x: centerX + 28, labelDx: 4, labelAnchor: "start" }
     ];
 
-    series.forEach((item, itemIndex) => {
+    series.forEach((item) => {
       const y = scaleY(item.value);
-
-      svg.appendChild(
-        createSvgEl("line", {
-          x1: item.x,
-          y1: baseY,
-          x2: item.x,
-          y2: y,
-          stroke: item.color,
-          "stroke-opacity": "0.22",
-          "stroke-width": 6,
-          "stroke-linecap": "round"
-        })
-      );
 
       svg.appendChild(
         createSvgEl("circle", {
           cx: item.x,
           cy: y,
-          r: 7,
-          fill: palette.white,
+          r: 7.4,
+          fill: item.color,
+          "fill-opacity": "0.92",
           stroke: item.color,
           "stroke-width": 3
         })
       );
 
       const valueLabel = createSvgEl("text", {
-        x: item.x,
-        y: y - (itemIndex === 1 ? 14 : 11),
+        x: item.x + item.labelDx,
+        y: y - 12,
         fill: item.color,
-        "font-size": "12",
+        "font-size": "13",
         "font-weight": "900",
-        "text-anchor": "middle",
+        "text-anchor": item.labelAnchor,
         stroke: palette.white,
-        "stroke-width": "3",
+        "stroke-width": "4",
         "paint-order": "stroke fill"
       });
       valueLabel.textContent = item.value.toFixed(1);
