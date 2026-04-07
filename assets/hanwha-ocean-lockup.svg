@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1180 220" fill="none">
+  <g transform="translate(18 28)">
+    <ellipse
+      cx="84"
+      cy="56"
+      rx="54"
+      ry="39"
+      transform="rotate(-18 84 56)"
+      stroke="#F47B00"
+      stroke-width="10"
+    />
+    <ellipse
+      cx="122"
+      cy="74"
+      rx="40"
+      ry="31"
+      transform="rotate(-12 122 74)"
+      stroke="#FFC07A"
+      stroke-width="8"
+    />
+    <ellipse
+      cx="105"
+      cy="95"
+      rx="32"
+      ry="29"
+      transform="rotate(18 105 95)"
+      stroke="#FFA34A"
+      stroke-width="8"
+    />
+  </g>
+  <text
+    x="248"
+    y="122"
+    fill="#191919"
+    font-size="76"
+    font-weight="500"
+    font-family="Arial, Helvetica, sans-serif"
+    letter-spacing="0.2"
+  >Hanwha Ocean</text>
+</svg>
