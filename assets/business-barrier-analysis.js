@@ -2827,12 +2827,12 @@ window.businessBarrierAnalysis = {
       "panelTitle": "EPU 주요 몰입 저해 요인",
       "kicker": "EPU engagement barriers",
       "tone": "green",
-      "responseCount": 578,
+      "responseCount": 658,
       "rows": [
         {
           "themeKo": "업무 과중과 몰입 저해",
           "themeEn": "Workload Pressure",
-          "sharePercent": 29.6,
+          "sharePercent": 26.0,
           "count": 171,
           "keywords": "몰입, 집중, 프로젝트, 시간, 수행",
           "example": "제가 업무에 몰입하기 어려웠던 가장 큰 요인은 성과보다 근무시간의 ‘양’을 중시하는 조직 문화와 업무 분배의 비효율성이라고 생각합니다. 주어진 근무시간 내에 집중하여 성과를 내는 것보다, 얼마나 오래 자리에 남아 있는지가 책임감과 성실함의 기준처럼 작동하고 있습니다.",
@@ -3013,8 +3013,8 @@ window.businessBarrierAnalysis = {
         {
           "themeKo": "리더십과 방향성 혼선",
           "themeEn": "Leadership & Org",
-          "sharePercent": 20.9,
-          "count": 121,
+          "sharePercent": 19.8,
+          "count": 130,
           "keywords": "변화, 방향, 방향성, 개편, 운영",
           "example": "잦은 조직, 팀의 변화에 따른 불 확실한 목표, 운영 방침, 각 지역(국내, 싱가폴, 암스 등)의 소통 부재로 내가 속한 조직이 어떤 방향으로 나가가고 있는지, 나아가야 하는지, 내가 그 속에 할 일은 무엇인지 인지하긱 어렵다.",
           "opinions": [
@@ -3138,13 +3138,22 @@ window.businessBarrierAnalysis = {
             "조직의 급격한 변화",
             "조직 개편에 따른 뒤숭숭한 분위기와 향후에 대한 불확실한 미래가 주요 원인이며, 조속히 조직 개편에 따른 우리가 나아가야하는 방향성 설정등이 확실해졌으면 한다.",
             "EPU 조직개편 과정에서 '사공'이 많아 혼선이 발생. 향후 통합 이후에도 조직이 제대로 운영될지에 대한 우려가 매우 큼. 현업 업무를 직접 담당하고 있는 실무의 의견이 최대한 반영될 필요가 있음",
-            "인사철에 조직구조 변동은 당연하게 받아들일 수 있지만, 다소 잦은 조직구조 변동으로 인해 일부 혼동이 있었던 적이 있음 되도록 조직변동을 최소화 할 수 있다면 좋을 것 같음"
+            "인사철에 조직구조 변동은 당연하게 받아들일 수 있지만, 다소 잦은 조직구조 변동으로 인해 일부 혼동이 있었던 적이 있음 되도록 조직변동을 최소화 할 수 있다면 좋을 것 같음",
+            "clear instrauction, organizational structure",
+            "No direction here. Very poor leadership within EPU.",
+            "The organizational structure is changed too frequently. It feels like Hanwha is in constant fire fighting mode instead of focused on building.",
+            "AMATERDAM - BUSINESS CLOSURE DECISION As per my opinion, a fair duration (ideally 3-5 years) shall be provided to establish a new office. Such kind of random decision is not good for overall growth & ambition for Hanwha Ocean business.",
+            "lack of direction and cooperation",
+            "Office closure at Amsterdam; strategically it may have been a good decision but it could have been implemented in a better way, loosing a talent pool experienced with FPSO business is a loss to the company",
+            "A person who is the most experienced in SuccessFactors, is not allowed to be part of the implementation. The team members who have no experience in the system is implementing the system. Hopefully, the management team recognizes this and take better actions.",
+            "1) As we setup new office and Office system is developing so software, internet, codes availability etc. 2) The roles and responsibility are different than informed before joining. In Manning plan, organization is not balance for India office. No junior level employee assigned. 3) As now we are working with Singapore office remotely, they first look local help than engaged us from remotely. By frequent visit and working for some time in other office's location will give confidence to all team members and we will know better to each other's. Office set up is growing and with time things will improve. Mandatory software irrespective of Job should be available as an engineering company. Team building parties to be organized time to time.",
+            "Decisions appear to be made without sufficient transparency or strategic consideration"
           ]
         },
         {
           "themeKo": "평가·보상·인사 이슈",
           "themeEn": "Fairness & Reward",
-          "sharePercent": 9.9,
+          "sharePercent": 8.7,
           "count": 57,
           "keywords": "평가, 인사, 보상, 성과, 고과",
           "example": "성과 대비 낮은 보상 (불공정한 인사평가)",
@@ -3211,7 +3220,7 @@ window.businessBarrierAnalysis = {
           "themeKo": "근무환경과 시스템 개선",
           "themeEn": "Work Environment",
           "sharePercent": 6.2,
-          "count": 36,
+          "count": 41,
           "keywords": "환경, 사무실, 절차, 시스템, 기준",
           "example": "1. 경력직에 대한 사내 조직도, 절차 및 시스템 등의 소개 및 체계적인 교육이 부족하고, 조선업 및 한화오션(대우조선해양) 근무자들만 이해하는 형태로(암묵적인 일처리 방식)",
           "opinions": [
@@ -3250,7 +3259,12 @@ window.businessBarrierAnalysis = {
             "업무를 진행하며, 몰입하기 어려웠던 경우는 거의 없었지만, 사무실의 공기가 좋지 않습니다. 환기를 시키려고 해도 창문이 너무 작아서 환기가 잘 되지 않습니다. 창문이 아니라 환기 시스템이나 공기청정시스템이 필요할 것 같습니다.",
             "프로그램 및 IT 서비스가 원활하지 않은 때가 많은 것 같습니다. 시스템적 개선이 필요해 보입니다.",
             "사무실 내 소음, 고성, 짜증, 한숨 과 같은 비매너행위 상급자가 주의를 주기 바람",
-            "조직 관리 부재. 조직간 업무 분장 되지 않아 어디까지가 나의 업무인지에 대해 항상 불확실한 환경이 업무 몰입에 저해됨. 큰 조직, 관리자 부재."
+            "조직 관리 부재. 조직간 업무 분장 되지 않아 어디까지가 나의 업무인지에 대해 항상 불확실한 환경이 업무 몰입에 저해됨. 큰 조직, 관리자 부재.",
+            "Lack of IT infrastructure e.g. common server, printing, video calling facilities",
+            "Since we have our office as a new set up, there is still lack of clarity between various offices regarding the Scope of responsibilities. Hanwha must have a clarity of the responsibilities of various offices. Is one office (or employees) reports to the other offices or each office is having a similar set of responsibility and authority. And because of the new set up only, we have faced multiple IT issues which also hindered our work.",
+            "Hanwha decided to close my office , and did not give me the opportunity for my to relocate . I believe this is een mistake from Hanwha . They are loosing 35 of my experience .",
+            "Unsure of place within company, not sure what the message of our president is Feels like there is looming anxiety our office will be laid off",
+            "The Singapore office has been set up recently. It is understandable that things will take sometime to be organised. However, HR has not issued the employee handbook to date. This has caused clarifications amongst employees as some things are not clear."
           ]
         }
       ]
@@ -5120,97 +5134,6 @@ window.businessBarrierAnalysis = {
             "회사가 회의실이 부족한 부분은 알고 있지만, 사무실 내에서 개인폰으로 스피커로 통화하는 행위는 하지 않았으면 합니다. 업무에 너무 방해가 됩니다.",
             "조직 간 R&R 이 명확하지 않아, 업무 혼선이 자주 있는 편임. 특히, EPU의 경우, 조직이 너무 세분화되다 보니, 기존 큰 조직으로 있을 때 담당했던 일부 업무들이 Grey area가 되는 듯함. (해당 업무의 주관 조직 및 담당자를 찾기 어려움) EPU의 조직 업무 분장에 대해, 명확한 기준(누락 없이)으로 재분장이 필요함.",
             "현재 회사 운영 전반에서 비효율적인 프로세스에 대한 피로감과 불편함이 매우 크게 누적되고 있습니다. 각종 신청 절차, 보고·결재 방식, 업무연락 등 기본적인 행정 프로세스가 여전히 아날로그 중심·문서 기반으로 운영되면서 다양한 병목이 발생하고 있습니다. 특히, 내부 보안 이슈 등을 이유로 AI나 디지털 툴을 충분히 활용하지 못하는 환경 때문에 구성원들은 더 큰 불편을 호소하고 있습니다. 더 나은 효율을 낼 수 있는 도구들이 있는데도 실제 업무에서는 활용이 제한되어 있어 업무 속도와 품질 모두 떨어지는 역설적인 상황이 발생하고 있습니다. 또한 회사가 구성원을 감시·통제하려는 경향이 강하다고 느끼는 직원들도 많습니다. 전사적으로 공정성을 위해 동일한 기준을 적용한다는 취지는 이해하지만, 실제 운영에서는 구성원의 자율성이 보장되지 않는다는 피드백이 반복됩니다. 더 큰 문제는, 회사가 “혁신, 디지털 전환, 빠른 변화”를 외치고 있음에도, 일상적인 행정 처리 단계는 오히려 그 변화를 가로막는 가장 큰 병목이 되고 있다는 점입니다. 예를 들어 여전히 원본 문서 제출을 요구하는 80년대식 프로세스, 불필요한 수발 문서 처리, 반복적인 안내만 제공하는 지원 부서 등은 혁신을 이야기하는 조직의 모습과는 크게 괴리되어 있습니다. 이러한 비효율적 프로세스에 대한 문제 제기를 하더라도 “형식적이고 무미건조한 대응”, “정작 바뀌지 않는 방식”, “지원부서가 늘 같은 말만 반복하는 모습” 이 계속되면서 구성원들의 불만과 체념이 커지고 있습니다. 조직이 효율성을 강조하고 비용·품질 개선을 요구하면서도, 정작 프로세스 효율이 가장 시급한 포지션들에서는 개선이 거의 이루어지지 않는 모순이 존재합니다."
-          ]
-        }
-      ]
-    },
-    {
-      "sectionId": "conclusion-barrier-english",
-      "menuLabel": "English",
-      "title": "English",
-      "panelTitle": "English response barriers",
-      "kicker": "English engagement barriers",
-      "tone": "purple",
-      "responseCount": 80,
-      "rows": [
-        {
-          "themeKo": "협업과 소통 단절",
-          "themeEn": "Communication Gap",
-          "sharePercent": 21.2,
-          "count": 17,
-          "keywords": "communication, support, engagement, feedback, visibility",
-          "example": "Recently, my engagement has been impacted mainly by a lack of clarity around shifting priorities and limited visibility into how my contributions directly influence final decisions or project outcomes.",
-          "opinions": [
-            "More empowerment to troubleshoot issues & faster response from responsible people in Korea.",
-            "Not getting fully support and feedback from support team",
-            "Overall, engagement has been good. As the organization continues to grow and refine processes, ongoing communication and early visibility into updates help teams stay aligned and proactive. Continued structure and clarity will further support strong collaboration and results.",
-            "Meetings should be managed in a more efficient and structured manner. An excessive number of meetings does not automatically lead to improved productivity.",
-            "Recently, my engagement has been slightly affected by workload fluctuations and occasional last minute task priorities, To improve engagement, it would help to have better advance planning of tasks, clear communication in priorities and more structured coordination between teams.",
-            "Sometimes auto lock of files give hard time to communicate with vendors in mail attachment. it takes more time in communication as receiver cannot be able to open attachment.",
-            "Decisions are made in way that aren't obvious or logical Organization keeps changing, not clear/stable. Changes need to be made: - standardization processes - increase collaboration, communication, training ==> efficiency/productivity",
-            "Recently, my engagement has been impacted mainly by a lack of clarity around shifting priorities and limited visibility into how my contributions directly influence final decisions or project outcomes. At times, rapid changes in direction without full alignment have made it harder to stay fully energized and proactive. Additionally, when communication across teams or suppliers slows down (especially on critical packages), it can create bottlenecks that reduce momentum and motivation. I believe engagement would improve with: Clearer prioritization and alignment on key objectives More transparency around decision-making and evaluation criteria Earlier involvement in strategic discussions, especially where category strategy can influence outcomes Regular feedback loops, so expectations and performance are aligned in real time",
-            "Some of the engagements are related to decision making from other teams /depending on External parties outcome and if there is a late decision it affects the execution of workscope and schedule. Changes would be quick decision making and support from all teams to resolve the issues.",
-            "As such nothing. Just a minor, communication issue comes up due to working with different teams placed at different locations.",
-            "More clear communication on what is expected from me.",
-            "The recent announcement of AMS closure, the HO decision to not bid SEAP, delays on investment, brings to the team lots of uncertainty. Those points associated with most of the project members who recently joined Hanwha, brings lots of side conversations. I would like HO improves on communication and informing the pipeline. This will bring stability to the team.",
-            "The planned office closure has reduced engagement recently, largely due to uncertainty about next steps and how roles may be affected. Clear communication and support during the transition would help improve morale and focus.",
-            "My engagement has been most challenged by recurring misalignment between internal positioning and external messaging. When I am asked to lead business development efforts but lack consistent internal coordination, timely information, or unified messaging, it creates avoidable exposure with clients and weakens credibility. That dynamic reduces effectiveness and, consequently, engagement. What would significantly improve engagement is: Clear ownership of customer strategy and messaging Structured internal alignment before external commitments Defined accountability lines across regions and functions Real-time visibility on decisions impacting customer discussions I am highly motivated by building strategic customer relationships and expanding market position. With stronger internal alignment and execution discipline, I can operate at full capacity and deliver significantly greater impact.",
-            "Better communication and respect each other",
-            "Pending Mechanical Completion & Commissioning and Operation team to be formed so as to gather their feedback and input for further discussion on workflow optimization",
-            "Difficult of alignment and communication across different company locations, which sometimes reduces visibility into priorities and strategic direction. In addition, more consistent and constructive feedback from supervisors directly connected to my role would help me better understand my performance, growth expectations, and career progression. Improved cross-location communication and more structured career development conversations would significantly enhance engagement."
-          ]
-        },
-        {
-          "themeKo": "리더십과 조직 방향성",
-          "themeEn": "Leadership & Org",
-          "sharePercent": 11.2,
-          "count": 9,
-          "keywords": "organizational, implement, structure, build, good",
-          "example": "The organizational structure is changed too frequently. It feels like Hanwha is in constant fire fighting",
-          "opinions": [
-            "clear instrauction, organizational structure",
-            "No direction here. Very poor leadership within EPU.",
-            "The organizational structure is changed too frequently. It feels like Hanwha is in constant fire fighting mode instead of focused on building.",
-            "AMATERDAM - BUSINESS CLOSURE DECISION As per my opinion, a fair duration (ideally 3-5 years) shall be provided to establish a new office. Such kind of random decision is not good for overall growth & ambition for Hanwha Ocean business.",
-            "lack of direction and cooperation",
-            "Office closure at Amsterdam; strategically it may have been a good decision but it could have been implemented in a better way, loosing a talent pool experienced with FPSO business is a loss to the company",
-            "A person who is the most experienced in SuccessFactors, is not allowed to be part of the implementation. The team members who have no experience in the system is implementing the system. Hopefully, the management team recognizes this and take better actions.",
-            "1) As we setup new office and Office system is developing so software, internet, codes availability etc. 2) The roles and responsibility are different than informed before joining. In Manning plan, organization is not balance for India office. No junior level employee assigned. 3) As now we are working with Singapore office remotely, they first look local help than engaged us from remotely. By frequent visit and working for some time in other office's location will give confidence to all team members and we will know better to each other's. Office set up is growing and with time things will improve. Mandatory software irrespective of Job should be available as an engineering company. Team building parties to be organized time to time.",
-            "Decisions appear to be made without sufficient transparency or strategic consideration"
-          ]
-        },
-        {
-          "themeKo": "프로세스·기준·업무 체계",
-          "themeEn": "Process & Safety",
-          "sharePercent": 11.2,
-          "count": 9,
-          "keywords": "process, standard, system, workflow, tool",
-          "example": "Brazilian Branch is in the starting process, so Early-stage ambiguity: Goals, success metrics, and decision rights are still forming, which makes prioritization harder.",
-          "opinions": [
-            "change the complex process to simple and straight forward.",
-            "Brazilian Branch is in the starting process, so Early-stage ambiguity: Goals, success metrics, and decision rights are still forming, which makes prioritization harder. Cross-time-zone coordination: Delays in approvals and feedback slow execution. Tooling and processes not fully ready: Access, systems, and local workflows are still being set up. Limited local autonomy: Many decisions depend on other regions, reducing speed and ownership. Onboarding & knowledge gaps: Documentation and Brazil-specific playbooks are incomplete. What would help improve my engagement 90-day Brazil plan: Clear OKRs, decision owners, and a RACI for core processes. Local enablement: Fast-track access to tools, a Brazil onboarding checklist, and localized SOPs. Time-zone guardrails: Defined “overlap hours,” delegated approvers in-region, and SLA expectations. Autonomy with guardrails: Empower Brazil leads to make day-to-day decisions within budget/risks. Clear growth paths: Role leveling, promotion criteria, and mentorship for Brazil employees.",
-            "Manual/Fragmented Workflows: Relying on spreadsheets and email instead of integrated eProcurement systems creates data silos, increases errors, and slows down approvals.",
-            "IT systems need to be less restrictive.",
-            "HO has appointed me as the overall Document Management Lead to oversee ProArc system, developments, and DMS enhancements across TS, HM, Mooring, other business units, and the India office. However, I have observed that HO has not yet established a dedicated DMT function to manage tools, people, procedures, and consistent ways of working across locations. Establishing this function will strengthen the Document Management discipline and bring all DMT teams under a unified framework, enabling clear governance, standards, and alignment across all entities. Currently, DMT reports into Engineering or Project Control, which is neither effective nor efficient. The DMT function head should manage the team, tools, and procedures, ensuring all three elements operate cohesively under a single DMT function. Given the broad scope of DMT, we must also engage closely with stakeholders including clients, suppliers, subcontractors, authorities, and HO teams. DMT will continue to work closely with Engineering to develop procedures, workflows, and work instructions. In my view, DMT should sit under Engineering rather than Project Control, as Project Control is primarily cost- and reporting-driven and does not provide sufficient value for managing document governance and systems. I sincerely hope management will consider establishing a strong, centralized DMT function to manage document management consistently across all EPU projects.",
-            "Availability of software and latest technical standards",
-            "Frequent interruptions in opening the files or documents in the computer or share point or the files received by email is hindering the work engagement. Definitely safety of intellectual property is utmost important for our Company, but some simplified process to access the technical files/documents will help to improve the efficiency. Hope Company can do some improvement in this aspect without compromising our data security",
-            "It is important to know the expected outcome of processes that I am involved so that every effort is directed to address the achieve it. Frequently this clarity is not brought on inter discipline level. Of course, we are working on standards however following standard procedures will help.",
-            "The working process can be further improved."
-          ]
-        },
-        {
-          "themeKo": "근무환경과 복지",
-          "themeEn": "Work Environment",
-          "sharePercent": 6.2,
-          "count": 5,
-          "keywords": "office, facility, infrastructure, call, video",
-          "example": "Since we have our office as a new set up, there is still lack of clarity between various offices regarding the Scope of responsibilities.",
-          "opinions": [
-            "Lack of IT infrastructure e.g. common server, printing, video calling facilities",
-            "Since we have our office as a new set up, there is still lack of clarity between various offices regarding the Scope of responsibilities. Hanwha must have a clarity of the responsibilities of various offices. Is one office (or employees) reports to the other offices or each office is having a similar set of responsibility and authority. And because of the new set up only, we have faced multiple IT issues which also hindered our work.",
-            "Hanwha decided to close my office , and did not give me the opportunity for my to relocate . I believe this is een mistake from Hanwha . They are loosing 35 of my experience .",
-            "Unsure of place within company, not sure what the message of our president is Feels like there is looming anxiety our office will be laid off",
-            "The Singapore office has been set up recently. It is understandable that things will take sometime to be organised. However, HR has not issued the employee handbook to date. This has caused clarifications amongst employees as some things are not clear."
           ]
         }
       ]
