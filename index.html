@@ -5867,7 +5867,7 @@ const conclusionInsightPatternIds = {
   middle: [7, 5, 3],
   nieun: [8, 9, 6]
 };
-const conclusionInsightRadarOrder = [1, 2, 3, 6, 9, 8, 7, 4, 5];
+const conclusionInsightRadarOrder = [1, 2, 3, 6, 9, 8, 7, 5, 4];
 const conclusionInsightData = parseConclusionInsightData();
 const engagementBarrierRows = [
   {
@@ -6508,6 +6508,15 @@ function isAllBusinessAggregateRow(row) {
   return row["직군"] !== "전체" && /\(.*전체\)/.test(String(row["구분"] || ""));
 }
 
+const businessProductionAllowedDivisions = new Set(["제조총괄", "생산본부"]);
+
+function isBusinessDetailRowAllowed(sectionId, row) {
+  if (sectionId !== "biz-production") return true;
+
+  const divisionName = String(row?.["division_name"] || "").trim().replace(/^\d+\.\s*/, "");
+  return businessProductionAllowedDivisions.has(divisionName);
+}
+
 function parseBusinessUnitRows(sectionId, csvBody) {
   const headers = parseCsvLine(String(window.businessUnitDetailHeaders?.[sectionId] || window.businessUnitDetailHeader || ""))
     .map((header) => header.trim())
@@ -6524,7 +6533,8 @@ function parseBusinessUnitRows(sectionId, csvBody) {
         row[header] = (values[index] || "").trim();
         return row;
       }, {});
-    });
+    })
+    .filter((row) => isBusinessDetailRowAllowed(sectionId, row));
 
   return normalizeBusinessDetailDepartmentRows(sectionId, parsedRows);
 }
@@ -6677,7 +6687,7 @@ function normalizeBusinessDetailDepartmentRows(sectionId, rows) {
             ...seedRow,
             division_name: seedRow["division_name"] || businessDetailSectionDisplayNameMap[sectionId] || "",
             구분: seedRow["구분"] || "",
-            팀: seedRow["구분"] || seedRow["팀"] || ""
+            팀: ""
           },
           aggregateSourceRows
         )
@@ -6686,7 +6696,7 @@ function normalizeBusinessDetailDepartmentRows(sectionId, rows) {
     if (!departmentRow || !hasBusinessDetailVisibleData(departmentRow)) return;
 
     departmentRow.__rowType = "department";
-    departmentRow["팀"] = departmentRow["구분"] || departmentRow["팀"] || "";
+    departmentRow["팀"] = "";
     departmentRowsByKey.set(key, departmentRow);
     teamRowsByKey.set(
       key,
