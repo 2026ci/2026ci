@@ -1388,7 +1388,7 @@
 
   .insight-group-grid {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: minmax(0, 1fr);
     gap: 14px;
   }
 
@@ -1858,6 +1858,115 @@
     font-weight: 800;
     color: var(--text);
     line-height: 1.55;
+  }
+
+  .insight-business-wrap {
+    display: grid;
+    gap: 16px;
+    margin-top: 26px;
+  }
+
+  .insight-business-head {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 14px;
+    flex-wrap: wrap;
+    padding: 6px 2px 0;
+  }
+
+  .insight-business-kicker {
+    font-size: 12px;
+    font-weight: 900;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  .insight-business-title {
+    font-size: 24px;
+    font-weight: 950;
+    color: var(--text);
+    letter-spacing: -0.03em;
+  }
+
+  .insight-business-desc {
+    margin-top: 6px;
+    font-size: 13px;
+    line-height: 1.65;
+    color: var(--text2);
+  }
+
+  .insight-business-method {
+    border-radius: 999px;
+    padding: 8px 12px;
+    color: var(--accent2);
+    background: rgba(var(--blue-rgb), 0.08);
+    border: 1px solid rgba(var(--blue-rgb), 0.16);
+    font-size: 12px;
+    font-weight: 900;
+    white-space: nowrap;
+  }
+
+  .insight-business-grid {
+    display: grid;
+    gap: 16px;
+  }
+
+  .insight-group-card.business {
+    background: linear-gradient(180deg, #FFFFFF, rgba(var(--orange-rgb), 0.035));
+  }
+
+  .insight-group-pill.business {
+    background: linear-gradient(135deg, rgba(var(--orange-rgb), 0.98), rgba(var(--blue-rgb), 0.9));
+  }
+
+  .insight-stage-empty {
+    display: grid;
+    place-items: center;
+    min-height: 182px;
+    border-radius: 16px;
+    border: 1px dashed rgba(var(--blue-rgb), 0.22);
+    background: rgba(var(--blue-rgb), 0.04);
+    color: var(--text3);
+    font-size: 13px;
+    font-weight: 900;
+    text-align: center;
+  }
+
+  .business-detail-type-card {
+    margin: 0 0 14px;
+    background: linear-gradient(180deg, #FFFFFF, rgba(var(--orange-rgb), 0.035));
+  }
+
+  .business-detail-type-card .insight-group-layout {
+    grid-template-columns: 300px minmax(0, 1fr);
+  }
+
+  .business-detail-type-card.single-year .insight-group-matrix-wrap {
+    grid-template-columns: minmax(260px, 420px);
+    justify-content: center;
+  }
+
+  .business-detail-type-title {
+    display: grid;
+    gap: 4px;
+  }
+
+  .business-detail-type-kicker {
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+    text-transform: uppercase;
+  }
+
+  .business-detail-type-name {
+    font-size: 22px;
+    font-weight: 950;
+    color: var(--text);
+    letter-spacing: -0.03em;
   }
 
   .table-shell {
@@ -5537,6 +5646,7 @@
 <script src="assets/business-unit-production-data.js?v=20260330-2"></script>
 <script src="assets/business-unit-detail-overlay.js?v=20260330-2"></script>
 <script src="assets/business-barrier-analysis.js?v=20260330-3"></script>
+<script src="assets/business-conclusion-insight-data.js?v=20260421-1"></script>
 <script>
 const contentEl = document.querySelector(".content");
 const SVG_NS = "http://www.w3.org/2000/svg";
@@ -5869,6 +5979,9 @@ const conclusionInsightPatternIds = {
 };
 const conclusionInsightRadarOrder = [1, 2, 3, 6, 9, 8, 7, 5, 4];
 const conclusionInsightData = parseConclusionInsightData();
+const businessConclusionInsightRows = window.HANWHA_BUSINESS_CONCLUSION_INSIGHT_ROWS || [];
+const businessConclusionInsightOrder = ["상선사업부", "EPU", "특수선사업부", "제조총괄&CSHO", "제품전략기술원", "AX사업부", "경영지원"];
+const businessConclusionInsightData = parseBusinessConclusionInsightData();
 const engagementBarrierRows = [
   {
     group: "생산직",
@@ -8074,6 +8187,8 @@ function renderBusinessDetailSection(sectionId) {
       </div>
     </div>
 
+    ${renderBusinessDetailConclusionTypeCard(sectionId)}
+
     <div class="business-index-table-wrap block-tone-navy">
       <div class="business-index-table-head">
         <div>
@@ -9293,6 +9408,59 @@ function parseConclusionInsightData() {
   };
 }
 
+function summarizeBusinessConclusionPattern(snapshot2025, snapshot2026, ids, label, hasBaseline) {
+  const summary = summarizeConclusionInsightPattern(snapshot2025, snapshot2026, ids, label);
+  return {
+    ...summary,
+    delta: hasBaseline ? summary.delta : null
+  };
+}
+
+function buildBusinessConclusionInsightGroup(business) {
+  const rows2025 = businessConclusionInsightRows.filter((row) => row.business === business && Number(row.year) === 2025);
+  const rows2026 = businessConclusionInsightRows.filter((row) => row.business === business && Number(row.year) === 2026);
+  const year2025 = buildConclusionInsightSnapshot(rows2025);
+  const year2026 = buildConclusionInsightSnapshot(rows2026);
+  const hasBaseline = year2025.totalCount > 0;
+  const ranking2026 = Object.values(year2026.types).sort((a, b) => b.pct - a.pct);
+  const typeDeltas = {};
+
+  ranking2026.forEach((type) => {
+    typeDeltas[type.id] = hasBaseline ? (year2026.types[type.id]?.pct || 0) - (year2025.types[type.id]?.pct || 0) : null;
+  });
+
+  const typedRows = ranking2026
+    .map((type) => ({
+      ...type,
+      delta: typeDeltas[type.id]
+    }))
+    .filter((type) => Number.isFinite(type.delta));
+
+  return {
+    business,
+    year2025,
+    year2026,
+    hasBaseline,
+    ranking2026,
+    typeDeltas,
+    upType: typedRows.length ? [...typedRows].sort((a, b) => b.delta - a.delta)[0] : null,
+    downType: typedRows.length ? [...typedRows].sort((a, b) => a.delta - b.delta)[0] : null,
+    patterns: {
+      keok: summarizeBusinessConclusionPattern(year2025, year2026, conclusionInsightPatternIds.keok, "ㄱ패턴", hasBaseline),
+      middle: summarizeBusinessConclusionPattern(year2025, year2026, conclusionInsightPatternIds.middle, "중도유형", hasBaseline),
+      nieun: summarizeBusinessConclusionPattern(year2025, year2026, conclusionInsightPatternIds.nieun, "ㄴ패턴", hasBaseline)
+    }
+  };
+}
+
+function parseBusinessConclusionInsightData() {
+  return {
+    groups: businessConclusionInsightOrder
+      .map((business) => buildBusinessConclusionInsightGroup(business))
+      .filter((group) => group.year2026.totalCount > 0)
+  };
+}
+
 function getConclusionInsightHeatStyle(value, maxValue) {
   const alpha = 0.05 + (value / Math.max(maxValue, 1)) * 0.48;
   return `background: rgba(var(--orange-rgb), ${Math.min(alpha, 0.54).toFixed(3)});`;
@@ -9324,7 +9492,7 @@ function renderConclusionStageBlock(stageLabel, snapshot, isCurrent = false) {
     <div class="insight-matrix-block">
       <div class="insight-stage-tag ${isCurrent ? "current" : ""}">${escapeHtml(stageLabel)}</div>
       <div class="insight-stage-note">N=${escapeHtml(formatCount(snapshot.totalCount))}</div>
-      ${renderConclusionInsightMatrix(snapshot)}
+      ${snapshot.totalCount ? renderConclusionInsightMatrix(snapshot) : `<div class="insight-stage-empty">비교 기준 데이터 없음</div>`}
     </div>
   `;
 }
@@ -9341,7 +9509,8 @@ function renderConclusionPatternLine(pattern, toneClass) {
 }
 
 function renderConclusionPatternChip(pattern, toneClass) {
-  return `<span class="insight-pattern-chip ${toneClass}">${escapeHtml(pattern.label)} ${escapeHtml(formatDelta(pattern.delta))}</span>`;
+  const deltaText = Number.isFinite(pattern.delta) ? formatDelta(pattern.delta) : "2026 신규";
+  return `<span class="insight-pattern-chip ${toneClass}">${escapeHtml(pattern.label)} ${escapeHtml(deltaText)}</span>`;
 }
 
 function getConclusionRadarPoint(index, value, radius, maxValue, cx, cy, total) {
@@ -9374,7 +9543,7 @@ function buildConclusionRadarMarkers(snapshot, radius, maxValue, cx, cy, fill) {
     .join("");
 }
 
-function renderConclusionRadar(snapshot2025, snapshot2026) {
+function renderConclusionRadar(snapshot2025, snapshot2026, options = {}) {
   const size = 244;
   const cx = 122;
   const cy = 116;
@@ -9382,6 +9551,8 @@ function renderConclusionRadar(snapshot2025, snapshot2026) {
   const maxValue = 30;
   const ringRatios = [0.2, 0.4, 0.6, 0.8, 1];
   const axisCount = conclusionInsightRadarOrder.length;
+  const show2025 = options.show2025 !== false && snapshot2025.totalCount > 0;
+  const show2026 = options.show2026 !== false && snapshot2026.totalCount > 0;
   const grid = ringRatios
     .map((ratio) => {
       const points = conclusionInsightRadarOrder
@@ -9423,10 +9594,10 @@ function renderConclusionRadar(snapshot2025, snapshot2026) {
       ${grid}
       ${axes}
       ${ticks}
-      <polygon points="${buildConclusionRadarPoints(snapshot2025, radius, maxValue, cx, cy)}" fill="rgba(22, 87, 184, 0.12)" stroke="${palette.blue}" stroke-width="2.5"></polygon>
-      <polygon points="${buildConclusionRadarPoints(snapshot2026, radius, maxValue, cx, cy)}" fill="rgba(255, 119, 30, 0.16)" stroke="${palette.orange}" stroke-width="2.5"></polygon>
-      ${buildConclusionRadarMarkers(snapshot2025, radius, maxValue, cx, cy, palette.blue)}
-      ${buildConclusionRadarMarkers(snapshot2026, radius, maxValue, cx, cy, palette.orange)}
+      ${show2025 ? `<polygon points="${buildConclusionRadarPoints(snapshot2025, radius, maxValue, cx, cy)}" fill="rgba(22, 87, 184, 0.12)" stroke="${palette.blue}" stroke-width="2.5"></polygon>` : ""}
+      ${show2026 ? `<polygon points="${buildConclusionRadarPoints(snapshot2026, radius, maxValue, cx, cy)}" fill="rgba(255, 119, 30, 0.16)" stroke="${palette.orange}" stroke-width="2.5"></polygon>` : ""}
+      ${show2025 ? buildConclusionRadarMarkers(snapshot2025, radius, maxValue, cx, cy, palette.blue) : ""}
+      ${show2026 ? buildConclusionRadarMarkers(snapshot2026, radius, maxValue, cx, cy, palette.orange) : ""}
       ${labels}
     </svg>
   `;
@@ -9494,6 +9665,81 @@ function renderConclusionGroupPanel(groupKey, toneClass) {
         </div>
       </div>
       ${renderConclusionGroupSummary(groupData)}
+    </article>
+  `;
+}
+
+function renderBusinessConclusionSummary(groupData) {
+  if (!groupData.hasBaseline) {
+    return `
+      <div class="insight-group-summary">
+        <div class="insight-group-summary-item">
+          <div class="insight-group-summary-label">2026 최다 유형</div>
+          <div class="insight-group-summary-value">${escapeHtml(groupData.ranking2026[0].label)} · ${escapeHtml(formatPercent(groupData.ranking2026[0].pct))}</div>
+        </div>
+        <div class="insight-group-summary-item">
+          <div class="insight-group-summary-label">2026 ㄱ패턴</div>
+          <div class="insight-group-summary-value">${escapeHtml(formatPercent(groupData.patterns.keok.pct2026))}</div>
+        </div>
+        <div class="insight-group-summary-item">
+          <div class="insight-group-summary-label">2026 ㄴ패턴</div>
+          <div class="insight-group-summary-value">${escapeHtml(formatPercent(groupData.patterns.nieun.pct2026))}</div>
+        </div>
+      </div>
+    `;
+  }
+
+  return renderConclusionGroupSummary(groupData);
+}
+
+function getBusinessDetailConclusionGroup(sectionId) {
+  const businessName = businessDetailSectionDisplayNameMap[sectionId];
+  if (!businessName) return null;
+  return businessConclusionInsightData.groups.find((groupData) => groupData.business === businessName) || null;
+}
+
+function renderBusinessDetailConclusionTypeCard(sectionId) {
+  const groupData = getBusinessDetailConclusionGroup(sectionId);
+  if (!groupData) return "";
+
+  const legend2025 = groupData.hasBaseline
+    ? `<span class="insight-legend-pill"><span class="insight-legend-dot" style="background: ${palette.blue};"></span>2025 2차</span>`
+    : "";
+  const matrixBlocks = groupData.hasBaseline
+    ? `
+      ${renderConclusionStageBlock("2025 2차", groupData.year2025)}
+      <div class="insight-arrow slim">→</div>
+      ${renderConclusionStageBlock("2026 1차", groupData.year2026, true)}
+    `
+    : renderConclusionStageBlock("2026 1차", groupData.year2026, true);
+
+  return `
+    <article class="insight-group-card business business-detail-type-card ${groupData.hasBaseline ? "" : "single-year"}">
+      <div class="insight-group-head">
+        <div class="business-detail-type-title">
+          <div class="business-detail-type-kicker">Engagement Type Matrix</div>
+          <div class="business-detail-type-name">${escapeHtml(groupData.business)} 몰입유형 변화</div>
+        </div>
+        <div class="insight-group-patterns">
+          ${renderConclusionPatternChip(groupData.patterns.keok, "orange")}
+          ${renderConclusionPatternChip(groupData.patterns.middle, "purple")}
+          ${renderConclusionPatternChip(groupData.patterns.nieun, "blue")}
+        </div>
+      </div>
+      <div class="insight-group-layout">
+        <div class="insight-radar-box">
+          <div class="insight-subtitle">유형 분포 스파이더 비교</div>
+          ${renderConclusionRadar(groupData.year2025, groupData.year2026, { show2025: groupData.hasBaseline })}
+          <div class="insight-radar-legend">
+            ${legend2025}
+            <span class="insight-legend-pill"><span class="insight-legend-dot" style="background: ${palette.orange};"></span>2026 1차</span>
+          </div>
+        </div>
+        <div class="insight-group-matrix-wrap">
+          ${matrixBlocks}
+        </div>
+      </div>
+      ${renderBusinessConclusionSummary(groupData)}
     </article>
   `;
 }
