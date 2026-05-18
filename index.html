@@ -5881,7 +5881,7 @@ const businessDetailColumnGroups = {
 };
 const businessDetailColumnGroupOverrides = {
   "biz-production": {
-    summary: ["division_name", "구분", "팀", "응답인원", "응답률", "몰입지수", "조직몰입", "업무몰입", "OI", "LI", "CI"],
+    summary: ["division_name", "구분", "팀", "응답인원", "응답률", "몰입지수", "조직몰입", "업무몰입", "OI", "safety", "operation", "tech", "LI", "CI"],
     detail: ["division_name", "구분", "팀", "조직몰입", "회사자랑", "존중", "입사추천", "희생", "조직공감력", "직무유연성", "업무몰입", "활력", "아침출근", "업무를통한성장", "나에대한기대", "성과인정기대", "WAY실천노력"],
     oi: ["division_name", "구분", "팀", "OI"],
     li: ["division_name", "구분", "팀", "LI", "LI1", "LI2", "LI3", "LI4", "LI5"],
@@ -6809,11 +6809,18 @@ function normalizeBusinessDetailDepartmentRows(sectionId, rows) {
         )
       : null;
 
-    if (!departmentRow || !hasBusinessDetailVisibleData(departmentRow)) return;
+    const mergedDepartmentRow = sectionId === "biz-production" && departmentRow
+      ? mergeBusinessDetailRows(
+          departmentRow,
+          getBusinessDetailOverlayRow(sectionId, departmentRow["division_name"], departmentRow["구분"])
+        )
+      : departmentRow;
 
-    departmentRow.__rowType = "department";
-    departmentRow["팀"] = "";
-    departmentRowsByKey.set(key, departmentRow);
+    if (!mergedDepartmentRow || !hasBusinessDetailVisibleData(mergedDepartmentRow)) return;
+
+    mergedDepartmentRow.__rowType = "department";
+    mergedDepartmentRow["팀"] = "";
+    departmentRowsByKey.set(key, mergedDepartmentRow);
     teamRowsByKey.set(
       key,
       teamRows
