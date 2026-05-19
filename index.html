@@ -5643,7 +5643,7 @@
 </div>
 
 <script src="assets/business-unit-detail-data.js?v=20260330-2"></script>
-<script src="assets/business-unit-production-data.js?v=20260330-2"></script>
+<script src="all_/assets/business-unit-production-data.js?v=20260330-2"></script>
 <script src="assets/business-unit-detail-overlay.js?v=20260330-2"></script>
 <script src="assets/business-barrier-analysis.js?v=20260330-3"></script>
 <script src="assets/business-conclusion-insight-data.js?v=20260421-1"></script>
@@ -6625,12 +6625,73 @@ function isAllBusinessAggregateRow(row) {
 }
 
 const businessProductionAllowedDivisions = new Set(["제조총괄", "생산본부"]);
+const businessProductionResponseSourceSectionId = "biz-manufacturing";
+let businessProductionTeamResponseRateMap = null;
 
 function isBusinessDetailRowAllowed(sectionId, row) {
   if (sectionId !== "biz-production") return true;
 
   const divisionName = String(row?.["division_name"] || "").trim().replace(/^\d+\.\s*/, "");
   return businessProductionAllowedDivisions.has(divisionName);
+}
+
+function getBusinessProductionTeamRowKey(row) {
+  return [
+    normalizeBusinessDetailOverlayPart(row?.["division_name"]),
+    normalizeBusinessDetailOverlayPart(row?.["구분"]),
+    normalizeBusinessDetailOverlayPart(row?.["팀"])
+  ].join("|||");
+}
+
+function getBusinessProductionTeamResponseRateMap() {
+  if (businessProductionTeamResponseRateMap) return businessProductionTeamResponseRateMap;
+
+  const headers = parseCsvLine(String(window.businessUnitDetailHeaders?.[businessProductionResponseSourceSectionId] || ""))
+    .map((header) => header.trim())
+    .filter(Boolean);
+  const csvBody = String(window.businessUnitDetailCsv?.[businessProductionResponseSourceSectionId] || "").trim();
+  const responseRateMap = new Map();
+
+  if (!headers.length || !csvBody) {
+    businessProductionTeamResponseRateMap = responseRateMap;
+    return responseRateMap;
+  }
+
+  csvBody
+    .split(/\n+/)
+    .map((line) => {
+      const values = parseCsvLine(line);
+      return headers.reduce((row, header, index) => {
+        row[header] = (values[index] || "").trim();
+        return row;
+      }, {});
+    })
+    .filter((row) => isBusinessDetailRowAllowed("biz-production", row))
+    .forEach((row) => {
+      const teamName = normalizeBusinessDetailOverlayPart(row["팀"]);
+      const departmentName = normalizeBusinessDetailOverlayPart(row["구분"]);
+      const responseRate = String(row["응답률"] || "").trim();
+      if (!teamName || teamName === "(전체)" || teamName === departmentName || !responseRate) return;
+      responseRateMap.set(getBusinessProductionTeamRowKey(row), responseRate);
+    });
+
+  businessProductionTeamResponseRateMap = responseRateMap;
+  return responseRateMap;
+}
+
+function applyBusinessProductionTeamResponseRate(row) {
+  if (!row) return row;
+
+  const teamName = normalizeBusinessDetailOverlayPart(row["팀"]);
+  const departmentName = normalizeBusinessDetailOverlayPart(row["구분"]);
+  if (!teamName || teamName === "(전체)" || teamName === departmentName) return row;
+
+  const responseRate = getBusinessProductionTeamResponseRateMap().get(getBusinessProductionTeamRowKey(row));
+  if (responseRate) {
+    row["응답률"] = responseRate;
+  }
+
+  return row;
 }
 
 function parseBusinessUnitRows(sectionId, csvBody) {
@@ -6645,10 +6706,11 @@ function parseBusinessUnitRows(sectionId, csvBody) {
     .split(/\n+/)
     .map((line) => {
       const values = parseCsvLine(line);
-      return headers.reduce((row, header, index) => {
+      const row = headers.reduce((row, header, index) => {
         row[header] = (values[index] || "").trim();
         return row;
       }, {});
+      return sectionId === "biz-production" ? applyBusinessProductionTeamResponseRate(row) : row;
     })
     .filter((row) => isBusinessDetailRowAllowed(sectionId, row));
 
@@ -6819,7 +6881,9 @@ function normalizeBusinessDetailDepartmentRows(sectionId, rows) {
     if (!mergedDepartmentRow || !hasBusinessDetailVisibleData(mergedDepartmentRow)) return;
 
     mergedDepartmentRow.__rowType = "department";
-    mergedDepartmentRow["팀"] = "";
+    mergedDepartmentRow["팀"] = sectionId === "biz-production"
+      ? String(mergedDepartmentRow["팀"] || mergedDepartmentRow["구분"] || "").trim()
+      : "";
     departmentRowsByKey.set(key, mergedDepartmentRow);
     teamRowsByKey.set(
       key,
