@@ -6626,7 +6626,7 @@ function isAllBusinessAggregateRow(row) {
 
 const businessProductionAllowedDivisions = new Set(["제조총괄", "생산본부"]);
 const businessProductionResponseSourceSectionId = "biz-manufacturing";
-let businessProductionTeamResponseRateMap = null;
+let businessProductionTeamSourceRowMap = null;
 
 function isBusinessDetailRowAllowed(sectionId, row) {
   if (sectionId !== "biz-production") return true;
@@ -6643,18 +6643,18 @@ function getBusinessProductionTeamRowKey(row) {
   ].join("|||");
 }
 
-function getBusinessProductionTeamResponseRateMap() {
-  if (businessProductionTeamResponseRateMap) return businessProductionTeamResponseRateMap;
+function getBusinessProductionTeamSourceRowMap() {
+  if (businessProductionTeamSourceRowMap) return businessProductionTeamSourceRowMap;
 
   const headers = parseCsvLine(String(window.businessUnitDetailHeaders?.[businessProductionResponseSourceSectionId] || ""))
     .map((header) => header.trim())
     .filter(Boolean);
   const csvBody = String(window.businessUnitDetailCsv?.[businessProductionResponseSourceSectionId] || "").trim();
-  const responseRateMap = new Map();
+  const sourceRowMap = new Map();
 
   if (!headers.length || !csvBody) {
-    businessProductionTeamResponseRateMap = responseRateMap;
-    return responseRateMap;
+    businessProductionTeamSourceRowMap = sourceRowMap;
+    return sourceRowMap;
   }
 
   csvBody
@@ -6670,13 +6670,12 @@ function getBusinessProductionTeamResponseRateMap() {
     .forEach((row) => {
       const teamName = normalizeBusinessDetailOverlayPart(row["팀"]);
       const departmentName = normalizeBusinessDetailOverlayPart(row["구분"]);
-      const responseRate = String(row["응답률"] || "").trim();
-      if (!teamName || teamName === "(전체)" || teamName === departmentName || !responseRate) return;
-      responseRateMap.set(getBusinessProductionTeamRowKey(row), responseRate);
+      if (!teamName || teamName === "(전체)" || teamName === departmentName) return;
+      sourceRowMap.set(getBusinessProductionTeamRowKey(row), { ...row });
     });
 
-  businessProductionTeamResponseRateMap = responseRateMap;
-  return responseRateMap;
+  businessProductionTeamSourceRowMap = sourceRowMap;
+  return sourceRowMap;
 }
 
 function applyBusinessProductionTeamResponseRate(row) {
@@ -6686,10 +6685,15 @@ function applyBusinessProductionTeamResponseRate(row) {
   const departmentName = normalizeBusinessDetailOverlayPart(row["구분"]);
   if (!teamName || teamName === "(전체)" || teamName === departmentName) return row;
 
-  const responseRate = getBusinessProductionTeamResponseRateMap().get(getBusinessProductionTeamRowKey(row));
-  if (responseRate) {
-    row["응답률"] = responseRate;
-  }
+  const sourceRow = getBusinessProductionTeamSourceRowMap().get(getBusinessProductionTeamRowKey(row));
+  if (!sourceRow) return row;
+
+  ["응답률", "safety", "operation", "tech"].forEach((key) => {
+    const value = String(sourceRow[key] || "").trim();
+    if (value) {
+      row[key] = value;
+    }
+  });
 
   return row;
 }
